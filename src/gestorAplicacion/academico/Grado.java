@@ -47,14 +47,29 @@ public class Grado {
 		estudiantes.add(nene);
 		nene.setGrado(this);
 	}
-	
 	public void agregarAsignatura(Asignatura asi) {
 		asignaturas.add(asi);
 		asi.agregarGrado(this);
 	}
-	
-	
-	
+	public void cambiarProfesor(Profesor profe) {
+		this.setProfesor_encargado(profe);
+	}
+	public void elimarAsignatura(Asignatura asi, String index) {
+		
+	}
+	public void eliminarEstudiante(Estudiante nene, String index) {
+		
+	}
+	public void estudiantesInscritos() {
+		for(int i=0;i<estudiantes.size();i++) {
+			System.out.println(estudiantes.get(i).getNombre()+" "+estudiantes.get(i).getApellido());
+		}
+	}
+	public void asignaturasDelGrado() {
+		for(int i=0;i<asignaturas.size();i++) {
+			System.out.println(asignaturas.get(i).getNombre();
+		}
+	}
 	
 	
 	

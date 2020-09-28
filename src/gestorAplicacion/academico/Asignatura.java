@@ -10,7 +10,6 @@ public class Asignatura {
 	public ArrayList<Grado> getGrados() {
 		return grados;
 	}
-
 	public void setGrados(ArrayList<Grado> grados) {
 		this.grados = grados;
 	}
