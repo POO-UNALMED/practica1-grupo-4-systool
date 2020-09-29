@@ -9,14 +9,14 @@ public class Asignatura {
 	private String descripcion;
 	public byte numero_notas;
 	public float porcentaje_avance;
-	private ArrayList<Grado> grados = new ArrayList<Grado>();
-	private ArrayList<Profesor> profesores = new ArrayList<Profesor>();
-	private ArrayList<Nota> calificaciones = new ArrayList<Nota>();
+	private ArrayList <Grado> grados = new ArrayList <Grado>();
+	private ArrayList <Profesor> profesores = new ArrayList <Profesor>();
+	private ArrayList <Nota> calificaciones = new ArrayList <Nota>();
 
-	public ArrayList<Grado> getGrados() {
+	public ArrayList <Grado> getGrados() {
 		return grados;
 	}
-	public void setGrados(ArrayList<Grado> grados) {
+	public void setGrados(ArrayList <Grado> grados) {
 		this.grados = grados;
 	}
 	
@@ -41,16 +41,16 @@ public class Asignatura {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public ArrayList<Profesor> getProfesores() {
+	public ArrayList <Profesor> getProfesores() {
 		return profesores;
 	}
 	public void setProfesores(ArrayList<Profesor> profesores) {
 		this.profesores = profesores;
 	}
-	public ArrayList<Nota> getCalificaciones() {
+	public ArrayList <Nota> getCalificaciones() {
 		return calificaciones;
 	}
-	public void setCalificaciones(ArrayList<Nota> calificaciones) {
+	public void setCalificaciones(ArrayList <Nota> calificaciones) {
 		this.calificaciones = calificaciones;
 	}
 	

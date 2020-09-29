@@ -9,6 +9,7 @@ public class Profesor extends Persona{
 	private int telefono;
 	private ArrayList<Grado> grado_encargado = new ArrayList<Grado>();
 	private ArrayList<Asignatura> asignaturas = new ArrayList<Asignatura>();
+	
 	public int getTelefono() {
 		return telefono;
 	}
