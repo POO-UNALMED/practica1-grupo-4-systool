@@ -1,5 +1,8 @@
 package gestorAplicacion.academico;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
 import gestorAplicacion.perfiles.Estudiante;
 import gestorAplicacion.perfiles.Profesor;
 
@@ -16,7 +19,7 @@ public class Grado {
 	}
 	
 	
-	//Getters y Setters de los atributos.
+	//Getters y Setters
 	public String getId() {
 		return id;
 	}
@@ -71,6 +74,23 @@ public class Grado {
 		}
 	}
 	
+	
+	
+	//Funcionalidades Especiales
+	
+	
+	public void cuadro_Honor(){
+		Collections.sort(estudiantes, new Comparator<Estudiante>() {
+			   public int compare(Estudiante obj1, Estudiante obj2) {
+			      return obj1.getPromedio().compareTo(obj2.getPromedio());
+			   }
+			});
+		for(Estudiante temp: estudiantes){
+		    System.out.println(temp.getPromedio());
+		}
+		
+		
+	}
 	
 	
 	
