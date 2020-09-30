@@ -9,8 +9,8 @@ import gestorAplicacion.perfiles.Profesor;
 public class Grado {
 	private String id;
 	private Profesor profesor_encargado;
-	private ArrayList <Estudiante> estudiantes = new ArrayList<Estudiante>();
-	private ArrayList <Asignatura> asignaturas = new ArrayList<Asignatura>();
+	private ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
+	private ArrayList<Asignatura> asignaturas = new ArrayList<Asignatura>();
 	
 	//Constructor
 	Grado(String id, Profesor lider){
@@ -65,12 +65,12 @@ public class Grado {
 	}
 	public void estudiantesInscritos() {
 		for(int i = 0; i < estudiantes.size(); i++) {
-			System.out.println(estudiantes.get(i).getNombre()+" "+estudiantes.get(i).getApellido());
+			System.out.println(estudiantes.get(i).getNombres()+" "+estudiantes.get(i).getApellidos());
 		}
 	}
 	public void asignaturasDelGrado() {
 		for(int i = 0; i < asignaturas.size(); i++) {
-			System.out.println(asignaturas.get(i).getNombre();
+			System.out.println(asignaturas.get(i).getNombre());
 		}
 	}
 	
@@ -82,7 +82,8 @@ public class Grado {
 	public void cuadro_Honor(){
 		Collections.sort(estudiantes, new Comparator <Estudiante>() {
 			   public int compare(Estudiante obj1, Estudiante obj2) {
-			      return obj1.getPromedio().compareTo(obj2.getPromedio());
+				return 0;
+			      //return obj1.getPromedio().compareTo(obj2.getPromedio());
 			   }
 			});
 		for(Estudiante temp: estudiantes){
