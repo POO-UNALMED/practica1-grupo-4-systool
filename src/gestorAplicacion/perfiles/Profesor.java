@@ -4,18 +4,32 @@ import gestorAplicacion.academico.*;
 
 
 public class Profesor extends Persona{
+	private String nombre;
+	private String apellido;
+	private int DNI;
+	private int edad;
 	private String titulo_profesional;
 	private String email;
-	private int telefono;
 	private ArrayList<Grado> grado_encargado = new ArrayList<Grado>();
 	private ArrayList<Asignatura> asignaturas = new ArrayList<Asignatura>();
 	
-	public int getTelefono() {
-		return telefono;
+	
+	public  void setNombre(String nombre) {
+		this.nombre=nombre;
 	}
-	public void setTelefono(int telefono) {
-		this.telefono = telefono;
+	public  String getNombre() {
+		return nombre;
 	}
+	public  void setApellidos(String apellidos);
+	public  String getApellidos();
+	public void setDNI(int DNI) {
+		this.DNI=DNI;
+	}
+	public  int getDNI() {
+		return DNI;
+	}
+	public  void setEdad(int edad);
+	public  int getEdad();
 	public String getTitulo_profesional() {
 		return titulo_profesional;
 	}
