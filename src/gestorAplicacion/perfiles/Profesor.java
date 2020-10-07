@@ -20,16 +20,24 @@ public class Profesor extends Persona{
 	public  String getNombre() {
 		return nombre;
 	}
-	public  void setApellidos(String apellidos);
-	public  String getApellidos();
+	public  void setApellido(String apellido) {
+		this.apellido=apellido;
+	}
+	public  String getApellido() {
+		return apellido;
+	}
 	public void setDNI(int DNI) {
 		this.DNI=DNI;
 	}
 	public  int getDNI() {
 		return DNI;
 	}
-	public  void setEdad(int edad);
-	public  int getEdad();
+	public  void setEdad(int edad) {
+		this.edad=edad;
+	}
+	public  int getEdad() {
+		return edad;
+	}
 	public String getTitulo_profesional() {
 		return titulo_profesional;
 	}

@@ -3,6 +3,10 @@ import gestorAplicacion.academico.*;
 import java.util.ArrayList;
 
 public class Estudiante extends Persona{
+	private String nombre;
+	private String apellido;
+	private int DNI;
+	private int edad;
 	private String acudiente;
 	private float promedio;
 	private ArrayList <Nota> notas = new ArrayList <Nota>();
@@ -17,29 +21,29 @@ public class Estudiante extends Persona{
 		this.setAcudiente(acudiente);
 	}
 	
-	public int getDNI() {
+	public  void setNombre(String nombre) {
+		this.nombre=nombre;
+	}
+	public  String getNombre() {
+		return nombre;
+	}
+	public  void setApellido(String apellido) {
+		this.apellido=apellido;
+	}
+	public  String getApellido() {
+		return apellido;
+	}
+	public void setDNI(int DNI) {
+		this.DNI=DNI;
+	}
+	public  int getDNI() {
 		return DNI;
 	}
-	public void setDNI(int dNI) {
-		DNI = dNI;
+	public  void setEdad(int edad) {
+		this.edad=edad;
 	}
-	public String getNombres() {
-		return nombres;
-	}
-	public void setNombres(String nombres) {
-		this.nombres = nombres;
-	}
-	public String getApellidos() {
-		return apellidos;
-	}
-	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
-	}
-	public int getEdad() {
+	public  int getEdad() {
 		return edad;
-	}
-	public void setEdad(int edad) {
-		this.edad = edad;
 	}
 	
 	public void setAcudiente(String acudiente) {
