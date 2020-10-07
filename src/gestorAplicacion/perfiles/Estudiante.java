@@ -4,8 +4,6 @@ import java.util.ArrayList;
 
 public class Estudiante extends Persona{
 	private String acudiente;
-	private String direccion;
-	private int telefono;
 	private float promedio;
 	private ArrayList <Nota> notas = new ArrayList <Nota>();
 	private Grado grado;
@@ -13,10 +11,35 @@ public class Estudiante extends Persona{
 	Estudiante(){
 		super();
 	}
-	Estudiante (String acudiente, String direccion, int telefono, float promedio, ArrayList <Nota> notas, Grado grado){
+	Estudiante (int DNI, String nombres, String apellidos, int edad, String acudiente, 
+			ArrayList <Nota> notas, Grado grado){
+		super(DNI, nombres, apellidos, edad);
 		this.setAcudiente(acudiente);
-		this.setDireccion(direccion);
-		this.setTelefono(telefono);
+	}
+	
+	public int getDNI() {
+		return DNI;
+	}
+	public void setDNI(int dNI) {
+		DNI = dNI;
+	}
+	public String getNombres() {
+		return nombres;
+	}
+	public void setNombres(String nombres) {
+		this.nombres = nombres;
+	}
+	public String getApellidos() {
+		return apellidos;
+	}
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
+	}
+	public int getEdad() {
+		return edad;
+	}
+	public void setEdad(int edad) {
+		this.edad = edad;
 	}
 	
 	public void setAcudiente(String acudiente) {
@@ -24,18 +47,6 @@ public class Estudiante extends Persona{
 	}
 	public String getAcudiente() {
 		return acudiente;
-	}
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
-	}
-	public String getDireccion() {
-		return direccion;
-	}
-	public void setTelefono(int telefono) {
-		this.telefono = telefono;
-	}
-	public int getTelefono() {
-		return telefono;
 	}
 	public float getPromedio() {
 		return promedio;
