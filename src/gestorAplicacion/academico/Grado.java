@@ -65,7 +65,7 @@ public class Grado {
 	}
 	public void estudiantesInscritos() {
 		for(int i = 0; i < estudiantes.size(); i++) {
-			System.out.println(estudiantes.get(i).getNombres()+" "+estudiantes.get(i).getApellidos());
+			System.out.println(estudiantes.get(i).getNombre()+" "+estudiantes.get(i).getApellido());
 		}
 	}
 	public void asignaturasDelGrado() {
