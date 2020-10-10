@@ -8,6 +8,19 @@ public class Nota {
 	private Estudiante estudiante;
 	private Asignatura asignatura;
 	
+	public Nota(float calif, String observacion, Estudiante studen, Asignatura asigna){
+		this.calificacion=calif;
+		this.observacion=observacion;
+		this.estudiante=studen;
+		this.asignatura=asigna;
+	}
+	public Nota(float calif, Estudiante studen, Asignatura asigna){
+		this.calificacion=calif;
+		this.observacion=null;
+		this.estudiante=studen;
+		this.asignatura=asigna;
+	}
+	
 	
 	public float getCalificacion() {
 		return calificacion;

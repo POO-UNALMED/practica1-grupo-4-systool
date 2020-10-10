@@ -10,7 +10,7 @@ public class Profesor extends Persona{
 	private int edad;
 	private String titulo_profesional;
 	private String email;
-	private ArrayList<Grado> grado_encargado = new ArrayList<Grado>();
+	private Grado grado_encargado;
 	private ArrayList<Asignatura> asignaturas = new ArrayList<Asignatura>();
 	
 	
@@ -50,10 +50,10 @@ public class Profesor extends Persona{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public ArrayList<Grado> getGrado_encargado() {
+	public Grado getGrado_encargado() {
 		return grado_encargado;
 	}
-	public void setGrado_encargado(ArrayList<Grado> grado_encargado) {
+	public void setGrado_encargado(Grado grado_encargado) {
 		this.grado_encargado = grado_encargado;
 	}
 	public ArrayList<Asignatura> getAsignaturas() {
@@ -62,5 +62,27 @@ public class Profesor extends Persona{
 	public void setAsignaturas(ArrayList<Asignatura> asignaturas) {
 		this.asignaturas = asignaturas;
 	}
+	
+	//Metodos
+	public void agregarAsignatura(Asignatura asig) {
+		this.asignaturas.add(asig);
+	}
+	
+	public void ponerNota(float calif, String observacion, Estudiante studen, Asignatura asigna) {
 
+	}
+	
+	
+	public String toString() {
+		return this.getNombre()+"\n"+
+				this.getApellido()+"\n"+
+				this.getDNI()+"\n"+
+				this.getEdad()+"\n"+
+				this.getTitulo_profesional()+"\n"+
+				this.getEmail()
+				;
+	}
+	
+	
+	
 }

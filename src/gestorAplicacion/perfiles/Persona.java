@@ -24,5 +24,5 @@ public abstract class Persona {
 	public abstract  void setEdad(int edad);
 	public abstract  int getEdad();
 	
-	
+	public abstract String toString();
 }

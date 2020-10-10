@@ -29,6 +29,15 @@ public class Asignatura {
 		dandosela desde Grado
 		*/
 	}
+	public void agregarNota(Nota cero) {
+		calificaciones.add(cero);
+		/*Este metodo es para poder asignarle a la lista
+		de grados el grado en el que esta la asigantura
+		dandosela desde Grado
+		*/
+	}
+	
+	
 	public String getNombre() {
 		return nombre;
 	}

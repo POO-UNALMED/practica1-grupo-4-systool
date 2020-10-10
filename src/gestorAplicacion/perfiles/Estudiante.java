@@ -11,6 +11,7 @@ public class Estudiante extends Persona{
 	private float promedio;
 	private ArrayList <Nota> notas = new ArrayList <Nota>();
 	private Grado grado;
+	private boolean ayuda = false;
 	
 	Estudiante(){
 		super();
@@ -46,6 +47,8 @@ public class Estudiante extends Persona{
 		return edad;
 	}
 	
+	
+	
 	public void setAcudiente(String acudiente) {
 		this.acudiente = acudiente;
 	}
@@ -67,13 +70,57 @@ public class Estudiante extends Persona{
 	public Grado getGrado () {
 		return grado;
 	}
+	public boolean isAyuda() {
+		return ayuda;
+	}
+	public void setAyuda(boolean ayuda) {
+		this.ayuda = ayuda;
+	}
 	
-	private void promedio(ArrayList <Nota> notas) {
-		int nro_notas = notas.size();
+	
+	public void agregarNota(Nota cero) {
+		this.notas.add(cero);
+		this.prevencion_bajo_rendimiento();
+		
+	}
+	
+	public void misNotas() {
+		for(Nota temp: notas){
+		    System.out.println(temp.getAsignatura()+" "+temp.getCalificacion());
+		}
+	}
+	
+	public void promedio() {
+		int nro_notas = this.notas.size();
 		for (float i = 0; i < nro_notas; i++) {
 			this.promedio += i;
 		}
 		this.promedio = this.promedio / nro_notas;
 	}
+	
+	public String toString() {
+		return this.getNombre()+"\n"+
+				this.getApellido()+"\n"+
+				this.getDNI()+"\n"+
+				this.getEdad()+"\n"+
+				this.getAcudiente()+"\n"+
+				this.getPromedio()+"\n"+
+				this.getGrado()
+				;
+	}
+	
+	//Metodo Especial
+	public void prevencion_bajo_rendimiento() {
+		this.promedio();
+		if(this.promedio >= 2.5 && this.promedio < 3.0) {
+			this.ayuda=true;
+			System.out.println("El estudiante "+this.getNombre()+" "+
+			this.getApellido()+" "+this.getDNI()+" necesita ayuda pedagogica");
+		}
+		
+	}
+	
+	
+	
 	
 }
