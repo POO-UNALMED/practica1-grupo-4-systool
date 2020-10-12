@@ -13,6 +13,12 @@ public class Asignatura {
 	private ArrayList <Profesor> profesores = new ArrayList <Profesor>();
 	private ArrayList <Nota> calificaciones = new ArrayList <Nota>();
 
+	public Asignatura (String nombre, String descripcion,byte numero) {
+		this.setNombre(nombre);
+		this.setDescripcion(descripcion);
+		this.setNumero_notas(numero);
+	}
+
 	public ArrayList <Grado> getGrados() {
 		return grados;
 	}
@@ -25,24 +31,7 @@ public class Asignatura {
 	public void setNumero_notas(byte numer) {
 		this.numero_notas=numer;
 	}
-	
-	//Metodos
-	
-	public void agregarGrado(Grado grad) {
-		grados.add(grad);
-		/*Este metodo es para poder asignarle a la lista
-		de grados el grado en el que esta la asigantura
-		dandosela desde Grado
-		*/
-	}
-	public void agregarNota(Nota cero) {
-		calificaciones.add(cero);
-		/*Este metodo es para poder asignarle a la lista
-		de grados el grado en el que esta la asigantura
-		dandosela desde Grado
-		*/
-	}
-	
+
 	
 	public String getNombre() {
 		return nombre;
@@ -68,5 +57,20 @@ public class Asignatura {
 	public void setCalificaciones(ArrayList <Nota> calificaciones) {
 		this.calificaciones = calificaciones;
 	}
+	//Metodos
 	
+		public void agregarGrado(Grado grad) {
+			grados.add(grad);
+			/*Este metodo es para poder asignarle a la lista
+			de grados el grado en el que esta la asigantura
+			dandosela desde Grado
+			*/
+		}
+		public void agregarNota(Nota cero) {
+			calificaciones.add(cero);
+			/*Este metodo es para poder asignarle a la lista
+			de grados el grado en el que esta la asigantura
+			dandosela desde Grado
+			*/
+		}
 }

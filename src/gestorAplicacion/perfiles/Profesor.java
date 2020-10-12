@@ -4,15 +4,24 @@ import gestorAplicacion.academico.*;
 
 
 public class Profesor extends Persona{
-	private String nombre;
-	private String apellido;
-	private int DNI;
-	private int edad;
 	private String titulo_profesional;
 	private String email;
 	private Grado grado_encargado;
 	private ArrayList<Asignatura> asignaturas = new ArrayList<Asignatura>();
 	
+	public Profesor (int DNI, String nombres, String apellidos, int edad, String titulo,
+			String email, Grado grado){
+		super(DNI, nombres, apellidos, edad);
+		this.setTitulo_profesional(titulo);
+		this.setEmail(email);
+		this.setGrado_encargado(grado);
+	}
+	public Profesor (int DNI, String nombres, String apellidos, int edad, String titulo,
+			String email){
+		super(DNI, nombres, apellidos, edad);
+		this.setTitulo_profesional(titulo);
+		this.setEmail(email);
+	}
 	
 	public  void setNombre(String nombre) {
 		this.nombre=nombre;
@@ -67,12 +76,9 @@ public class Profesor extends Persona{
 	public void agregarAsignatura(Asignatura asig) {
 		this.asignaturas.add(asig);
 	}
-	
-	public void ponerNota(float calif, String observacion, Estudiante studen, Asignatura asigna) {
-
+	public void cambiar_grado(Grado grado) {
+		this.setGrado_encargado(grado);
 	}
-	
-	
 	public String toString() {
 		return this.getNombre()+"\n"+
 				this.getApellido()+"\n"+

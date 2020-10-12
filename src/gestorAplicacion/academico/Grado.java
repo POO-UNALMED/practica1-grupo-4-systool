@@ -16,11 +16,11 @@ public class Grado {
 	//Scanner
 	Scanner reader = new Scanner(System.in);
 	//Constructor
-	Grado(String id, Profesor lider){
+	public Grado(String id, Profesor lider){
 		this.setId(id);
 		this.setProfesor_encargado(lider);
 	}
-	Grado(String id){
+	public Grado(String id){
 		this.setId(id);
 		this.profesor_encargado=null;
 	}
@@ -95,7 +95,7 @@ public class Grado {
 			   }
 			});
 		if(estudiantes.size()%2==0) {
-			for(int i=0;i<estudiantes.size()/2;i++){
+			for(int i=0;i<estudiantes.size()/4;i++){
 			    System.out.println(estudiantes.get(i).getPromedio()+" "+
 			    		estudiantes.get(i).getNombre()+" "+
 			    		estudiantes.get(i).getApellido()

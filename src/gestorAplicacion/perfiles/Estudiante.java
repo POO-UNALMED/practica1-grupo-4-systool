@@ -3,10 +3,6 @@ import gestorAplicacion.academico.*;
 import java.util.*;
 
 public class Estudiante extends Persona{
-	private String nombre;
-	private String apellido;
-	private int DNI;
-	private int edad;
 	private String acudiente;
 	private float promedio;
 	private ArrayList <Nota> notas = new ArrayList <Nota>();
@@ -14,11 +10,8 @@ public class Estudiante extends Persona{
 	private Grado grado;
 	private boolean ayuda = false;
 	
-	Estudiante(){
-		super();
-	}
-	Estudiante (int DNI, String nombres, String apellidos, int edad, String acudiente, 
-			ArrayList <Nota> notas, Grado grado){
+	public Estudiante (int DNI, String nombres, String apellidos, int edad, String acudiente, 
+			Grado grado){
 		super(DNI, nombres, apellidos, edad);
 		this.setAcudiente(acudiente);
 	}

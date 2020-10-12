@@ -46,14 +46,14 @@ public class Nota {
 	public void setAsignatura(Asignatura asignatura) {
 		this.asignatura = asignatura;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+	/*public Nota agregar_nota(float calif, String observacion, Estudiante studen, Asignatura asigna) {
+		Nota nota = new Nota(calif,observacion,studen,asigna);
+		return nota;
+	}
+	public Nota agregar_nota(float calif, Estudiante studen, Asignatura asigna) {
+		Nota nota = new Nota(calif,studen,asigna);
+		return nota;
+	}*/
 	
 	
 }
