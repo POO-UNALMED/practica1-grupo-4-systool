@@ -19,6 +19,12 @@ public class Asignatura {
 	public void setGrados(ArrayList <Grado> grados) {
 		this.grados = grados;
 	}
+	public byte getNumero_notas() {
+		return numero_notas;
+	}
+	public void setNumero_notas(byte numer) {
+		this.numero_notas=numer;
+	}
 	
 	//Metodos
 	

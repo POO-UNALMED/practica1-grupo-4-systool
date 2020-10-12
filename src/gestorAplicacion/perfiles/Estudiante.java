@@ -1,6 +1,6 @@
 package gestorAplicacion.perfiles;
 import gestorAplicacion.academico.*;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Estudiante extends Persona{
 	private String nombre;
@@ -10,6 +10,7 @@ public class Estudiante extends Persona{
 	private String acudiente;
 	private float promedio;
 	private ArrayList <Nota> notas = new ArrayList <Nota>();
+	private HashMap <String,Float> promedios = new HashMap <String,Float>();
 	private Grado grado;
 	private boolean ayuda = false;
 	
@@ -46,9 +47,6 @@ public class Estudiante extends Persona{
 	public  int getEdad() {
 		return edad;
 	}
-	
-	
-	
 	public void setAcudiente(String acudiente) {
 		this.acudiente = acudiente;
 	}
@@ -76,8 +74,6 @@ public class Estudiante extends Persona{
 	public void setAyuda(boolean ayuda) {
 		this.ayuda = ayuda;
 	}
-	
-	
 	public void agregarNota(Nota cero) {
 		this.notas.add(cero);
 		this.prevencion_bajo_rendimiento();
@@ -90,12 +86,32 @@ public class Estudiante extends Persona{
 		}
 	}
 	
-	public void promedio() {
-		int nro_notas = this.notas.size();
-		for (float i = 0; i < nro_notas; i++) {
-			this.promedio += i;
+	public float promedio_asignatura(Asignatura asi) {
+		float nro_notas = 0;
+		int iter=0;
+		for(Nota temp: notas){
+		    if(temp.getAsignatura()==asi) {
+		    	nro_notas+=temp.getCalificacion();
+		    	iter++;
+		    }
 		}
-		this.promedio = this.promedio / nro_notas;
+		nro_notas = nro_notas / iter;
+		promedios.put(asi.getNombre(), nro_notas);
+		return nro_notas;
+	}
+	public void promedios() {
+		for(Nota temp: notas){
+			promedio_asignatura(temp.getAsignatura());
+		}
+	}
+	
+	public void promedio_general() {
+		float promediog=0;
+		promedios();
+		for (Map.Entry<String, Float> entry : promedios.entrySet()) {
+		    promediog+=entry.getValue();
+		}
+		this.promedio=promediog/this.promedios.size();
 	}
 	
 	public String toString() {
@@ -111,7 +127,7 @@ public class Estudiante extends Persona{
 	
 	//Metodo Especial
 	public void prevencion_bajo_rendimiento() {
-		this.promedio();
+		this.promedio_general();
 		if(this.promedio >= 2.5 && this.promedio < 3.0) {
 			this.ayuda=true;
 			System.out.println("El estudiante "+this.getNombre()+" "+
