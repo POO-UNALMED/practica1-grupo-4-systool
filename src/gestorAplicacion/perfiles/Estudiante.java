@@ -7,6 +7,7 @@ public class Estudiante extends Persona{
 	private float promedio;
 	private ArrayList <Nota> notas = new ArrayList <Nota>();
 	private HashMap <String,Float> promedios = new HashMap <String,Float>();
+	private static ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
 	private Grado grado;
 	private boolean ayuda = false;
 	
@@ -14,6 +15,7 @@ public class Estudiante extends Persona{
 			Grado grado){
 		super(DNI, nombres, apellidos, edad);
 		this.setAcudiente(acudiente);
+		estudiantes.add(this);
 	}
 	
 	public  void setNombre(String nombre) {
@@ -67,6 +69,14 @@ public class Estudiante extends Persona{
 	public void setAyuda(boolean ayuda) {
 		this.ayuda = ayuda;
 	}
+	public static ArrayList<Estudiante> getEstudiantes() {
+		return estudiantes;
+	}
+
+	public static void setEstudiantes(ArrayList<Estudiante> estudiantes) {
+		Estudiante.estudiantes = estudiantes;
+	}
+
 	public void agregarNota(Nota cero) {
 		this.notas.add(cero);
 		this.prevencion_bajo_rendimiento();
@@ -149,7 +159,16 @@ public class Estudiante extends Persona{
 		
 	}
 	
-	
+	public void mejores_colegio() {
+		Collections.sort(estudiantes, new Comparator <Estudiante>() {
+			   public int compare(Estudiante obj1, Estudiante obj2) {
+			      return new Float(obj2.getPromedio()).compareTo(obj1.getPromedio());
+			   }
+			});
+		for (int i = 0; i < 9; i++) {
+			System.out.println(estudiantes.get(i).toString() + "\n");
+		}
+	}
 	
 	
 }
