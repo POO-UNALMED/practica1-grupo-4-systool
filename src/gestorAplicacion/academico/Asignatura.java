@@ -57,20 +57,30 @@ public class Asignatura {
 	public void setCalificaciones(ArrayList <Nota> calificaciones) {
 		this.calificaciones = calificaciones;
 	}
+	public float getPorcentaje_avance() {
+		float porcentaje_avance_nota=100/numero_notas;
+		porcentaje_avance=porcentaje_avance_nota*calificaciones.size();
+		return porcentaje_avance;
+	}
+	public void setPorcentaje_avance(float porcentaje_avance) {
+		this.porcentaje_avance = porcentaje_avance;
+	}
 	//Metodos
 	
-		public void agregarGrado(Grado grad) {
-			grados.add(grad);
+	public void agregarGrado(Grado grad) {
+		grados.add(grad);
 			/*Este metodo es para poder asignarle a la lista
 			de grados el grado en el que esta la asigantura
 			dandosela desde Grado
 			*/
-		}
-		public void agregarNota(Nota cero) {
-			calificaciones.add(cero);
+	}
+	public void agregarNota(Nota cero) {
+		calificaciones.add(cero);
 			/*Este metodo es para poder asignarle a la lista
 			de grados el grado en el que esta la asigantura
 			dandosela desde Grado
 			*/
-		}
+	}
+
+	
 }

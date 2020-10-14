@@ -106,7 +106,27 @@ public class Estudiante extends Persona{
 		}
 		this.promedio=promediog/this.promedios.size();
 	}
-	
+	public Boolean porcentaje_periodo() {
+		int x=0,y=0;
+		boolean t=false;
+		for (Map.Entry<String, Float> entry : promedios.entrySet()) {
+		    //.getValue(); .getKey();
+			for(Nota temp: notas) {
+				if(entry.getKey().equals(temp.getAsignatura().getNombre())) {
+					if(temp.getAsignatura().getPorcentaje_avance()==100) {
+						t=true;
+					}else {
+					}t=false;
+				}
+			}if(t==true) {
+				x++;
+			}y++;
+		}if (y==x) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 	public String toString() {
 		return this.getNombre()+"\n"+
 				this.getApellido()+"\n"+

@@ -144,12 +144,13 @@ public class Grado {
 			   }
 			});
 		for(Estudiante temp: estudiantes){
-		    if(temp.isAyuda() == true && temp.getPromedio()>=3.0) {
-		    	System.out.println(temp.getPromedio()+" "+
-			    		temp.getNombre()+" "+
-			    		temp.getApellido()
-			    		);
-		    }
+			    if(temp.isAyuda() == true && temp.getPromedio()>=3.0&&temp.porcentaje_periodo()==true) {
+			    	System.out.println(temp.getPromedio()+" "+
+				    		temp.getNombre()+" "+
+				    		temp.getApellido()
+				    		);
+			    }
+			    
 		}
 	}
 }
