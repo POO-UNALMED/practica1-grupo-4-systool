@@ -1,17 +1,16 @@
 package gestorAplicacion.academico;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Scanner;
+import java.util.*;
+//import java.io.*;
 
 import gestorAplicacion.perfiles.Estudiante;
 import gestorAplicacion.perfiles.Profesor;
 
-public class Grado {
+public class Grado /*implements Serializable*/ {
 	private String id;
 	private Profesor profesor_encargado;
 	private ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
 	private ArrayList<Asignatura> asignaturas = new ArrayList<Asignatura>();
+	//private static ArrayList<Grado> grados = new ArrayList<Grado>();
 	
 	//Scanner
 	Scanner reader = new Scanner(System.in);
@@ -19,10 +18,12 @@ public class Grado {
 	public Grado(String id, Profesor lider){
 		this.setId(id);
 		this.setProfesor_encargado(lider);
+		//grados.add(this);
 	}
 	public Grado(String id){
 		this.setId(id);
 		this.profesor_encargado=null;
+		//grados.add(this);
 	}
 	
 	//Getters y Setters
@@ -50,6 +51,13 @@ public class Grado {
 	public void setAsignaturas(ArrayList<Asignatura> asignaturas) {
 		this.asignaturas = asignaturas;
 	}
+	/*
+	public static ArrayList<Grado> getGrados() {
+		return grados;
+	}
+	public static void setGrados(ArrayList<Grado> grados) {
+		Grado.grados = grados;
+	} */
 	
 	//Metodos
 	public void agregarEstudiante(Estudiante nene){

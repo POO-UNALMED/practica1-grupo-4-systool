@@ -1,8 +1,9 @@
 package gestorAplicacion.perfiles;
 import gestorAplicacion.academico.*;
 import java.util.*;
+//import java.io.*;
 
-public class Estudiante extends Persona{
+public class Estudiante extends Persona/* implements Serializable*/{
 	private String acudiente;
 	private float promedio;
 	private ArrayList <Nota> notas = new ArrayList <Nota>();

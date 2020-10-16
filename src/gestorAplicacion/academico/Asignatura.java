@@ -1,9 +1,9 @@
 package gestorAplicacion.academico;
-
-import java.util.ArrayList;
 import gestorAplicacion.perfiles.*;
+import java.util.ArrayList;
+//import java.io.*;
 
-public class Asignatura {
+public class Asignatura /*implements Serializable*/ {
 	
 	private String nombre;
 	private String descripcion;
@@ -12,11 +12,13 @@ public class Asignatura {
 	private ArrayList <Grado> grados = new ArrayList <Grado>();
 	private ArrayList <Profesor> profesores = new ArrayList <Profesor>();
 	private ArrayList <Nota> calificaciones = new ArrayList <Nota>();
+	//private static ArrayList <Asignatura> asignaturas = new ArrayList <Asignatura>();
 
 	public Asignatura (String nombre, String descripcion,byte numero) {
 		this.setNombre(nombre);
 		this.setDescripcion(descripcion);
 		this.setNumero_notas(numero);
+		//asignaturas.add(this);
 	}
 
 	public ArrayList <Grado> getGrados() {
@@ -57,6 +59,16 @@ public class Asignatura {
 	public void setCalificaciones(ArrayList <Nota> calificaciones) {
 		this.calificaciones = calificaciones;
 	}
+	/*
+	public static ArrayList <Asignatura> getAsignaturas() {
+		return asignaturas;
+	}
+
+	public static void setAsignaturas(ArrayList <Asignatura> asignaturas) {
+		Asignatura.asignaturas = asignaturas;
+	}*/
+	
+	
 	public float getPorcentaje_avance() {
 		float porcentaje_avance_nota=100/numero_notas;
 		porcentaje_avance=porcentaje_avance_nota*calificaciones.size();
