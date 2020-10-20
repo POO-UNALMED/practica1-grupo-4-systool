@@ -8,6 +8,7 @@ public class Estudiante extends Persona/* implements Serializable*/{
 	private float promedio;
 	private ArrayList <Nota> notas = new ArrayList <Nota>();
 	private HashMap <String,Float> promedios = new HashMap <String,Float>();
+	private HashMap <String,Float> porcentajes = new HashMap <String,Float>();
 	private static ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
 	private Grado grado;
 	private boolean ayuda = false;
@@ -102,6 +103,13 @@ public class Estudiante extends Persona/* implements Serializable*/{
 		nro_notas = nro_notas / iter;
 		promedios.put(asi.getNombre(), nro_notas);
 		return nro_notas;
+	}
+	public void avance_asignatura(String asi) {
+		for(Nota temp: notas) {
+			if (temp.getAsignatura().getNombre().equals(asi)){
+				porcentajes.put(asi,temp.getAsignatura().getPorcentaje_avance() );
+			}
+		}
 	}
 	public void promedios() {
 		for(Nota temp: notas){
