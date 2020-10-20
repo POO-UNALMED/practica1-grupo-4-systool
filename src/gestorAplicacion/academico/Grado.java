@@ -175,7 +175,7 @@ public class Grado /*implements Serializable*/ {
 			if(temp.getPromedio() >= 0.5 && temp.getPromedio() < 1.0 && temp.avance_periodo()>=40 && temp.avance_periodo()<=60) {
 				temp.setAyuda(true);
 				sal +="El estudiante "+temp.getNombre()+" "+
-						temp.getApellido()+" "+temp.getDNI()+" necesita ayuda pedagogica";
+						temp.getApellido()+" "+temp.getDNI()+" necesita ayuda pedagogica"+"\n";
 			}
 		
 		}
