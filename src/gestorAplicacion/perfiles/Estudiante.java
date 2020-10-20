@@ -80,14 +80,16 @@ public class Estudiante extends Persona/* implements Serializable*/{
 
 	public void agregarNota(Nota cero) {
 		this.notas.add(cero);
-		this.prevencion_bajo_rendimiento();
+		//this.prevencion_bajo_rendimiento();
 		
 	}
 	
-	public void misNotas() {
+	public String misNotas() {
+		String sal="";
 		for(Nota temp: notas){
-		    System.out.println(temp.getAsignatura()+" "+temp.getCalificacion());
+		    sal+=temp.getAsignatura()+" "+temp.getCalificacion()+"\n";
 		}
+		return sal;
 	}
 	
 	public float promedio_asignatura(Asignatura asi) {
@@ -164,7 +166,7 @@ public class Estudiante extends Persona/* implements Serializable*/{
 	}
 	
 	//Metodo Especial
-	public void prevencion_bajo_rendimiento() {
+	/*public void prevencion_bajo_rendimiento() {
 		this.promedio_general();
 		if(this.promedio >= 0.5 && this.promedio < 1.0 && this.avance_periodo()>=40 && this.avance_periodo()<=60) {
 			this.ayuda=true;
@@ -173,16 +175,18 @@ public class Estudiante extends Persona/* implements Serializable*/{
 		}
 		
 	}
-	
-	public void mejores_colegio() {
+	*/
+	public String mejores_colegio() {
 		Collections.sort(estudiantes, new Comparator <Estudiante>() {
 			   public int compare(Estudiante obj1, Estudiante obj2) {
 			      return new Float(obj2.getPromedio()).compareTo(obj1.getPromedio());
 			   }
 			});
-		for (int i = 0; i < 9; i++) {
-			System.out.println(estudiantes.get(i).toString() + "\n");
+		String sal=""
+;		for (int i = 0; i < 9; i++) {
+			sal+=estudiantes.get(i).toString() + "\n";
 		}
+		return sal;
 	}
 	
 	

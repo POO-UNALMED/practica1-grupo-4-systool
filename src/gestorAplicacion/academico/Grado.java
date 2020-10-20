@@ -77,56 +77,61 @@ public class Grado /*implements Serializable*/ {
 	public void eliminarEstudiante(Estudiante nene, String index) {
 		
 	}
-	public void estudiantesInscritos() {
+	public String estudiantesInscritos() {
 		Collections.sort(estudiantes, new Comparator <Estudiante>() {
 			   public int compare(Estudiante obj1, Estudiante obj2) {
 			      return obj1.getApellido().compareTo(obj2.getApellido());
 			   }
 			});
+		String sal="";
 		for(Estudiante temp: estudiantes) {
-			System.out.println(temp.getDNI()+": "+temp.getApellido()+" "+temp.getNombre());
+			sal+=temp.getDNI()+": "+temp.getApellido()+" "+temp.getNombre()+"\n";
 		}
+		return sal;
 	}
-	public void asignaturasDelGrado() {
+	public String asignaturasDelGrado() {
+		String sal="";
 		for(Asignatura temp: asignaturas) {
-			System.out.println(temp.getNombre());
+			sal+=temp.getNombre()+"\n";
 		}
+		return sal;
 	}
 
 	//Funcionalidades Especiales
 	
 	
-	public void cuadro_Honor(){
+	public String cuadro_Honor(){
 		Collections.sort(estudiantes, new Comparator <Estudiante>() {
 			   public int compare(Estudiante obj1, Estudiante obj2) {
 			      return new Float (obj2.getPromedio()).compareTo(obj1.getPromedio());
 			   }
 			});
+		String sal="";
 		if(estudiantes.size()%2==0) {
 			for(int i=0;i<estudiantes.size()/4;i++){
-			    System.out.println(estudiantes.get(i).getPromedio()+" "+
+			    sal+=estudiantes.get(i).getPromedio()+" "+
 			    		estudiantes.get(i).getNombre()+" "+
 			    		estudiantes.get(i).getApellido()
-			    		);
+			    		+"\n";
 			}
 		}
 		else {
 			for(int i=0;i<estudiantes.size()/3;i++){
-				System.out.println(estudiantes.get(i).getPromedio()+" "+
+				sal+=estudiantes.get(i).getPromedio()+" "+
 			    		estudiantes.get(i).getNombre()+" "+
 			    		estudiantes.get(i).getApellido()
-			    		);
+			    		+"\n";
 			}
 		}
-		
+		return sal;
 		
 		
 	}
 	
-	public void reporte_notas_individual() {
-		this.estudiantesInscritos();
-		System.out.println("Ingrese un DNI: ");
-		int dn = reader.nextInt();
+	public void reporte_notas_individual(int dn) {
+		//this.estudiantesInscritos();
+		//System.out.println("Ingrese un DNI: ");
+		//int dn = reader.nextInt();
 		for(Estudiante temp: estudiantes){
 		    if(dn == temp.getDNI()) {
 		    	temp.misNotas();
@@ -136,29 +141,44 @@ public class Grado /*implements Serializable*/ {
 		
 	}
 	
-	public void promedio_grado() {
+	public float promedio_grado() {
 		float promG = 0;
 		
 		for(Estudiante temp: estudiantes){
 		    promG += temp.getPromedio();
 		}
-		System.out.println(promG/this.estudiantes.size());
+		return promG/this.estudiantes.size();
 	}
 
-	public void cuadro_superacion() {
+	public String cuadro_superacion() {
 		Collections.sort(estudiantes, new Comparator <Estudiante>() {
 			   public int compare(Estudiante obj1, Estudiante obj2) {
 			      return new Float (obj2.getPromedio()).compareTo(obj1.getPromedio());
 			   }
 			});
+		String sal ="";
 		for(Estudiante temp: estudiantes){
 			    if(temp.isAyuda() == true && temp.getPromedio()>=3.0&&temp.porcentaje_periodo()==true) {
-			    	System.out.println(temp.getPromedio()+" "+
+			    	sal+=temp.getPromedio()+" "+
 				    		temp.getNombre()+" "+
 				    		temp.getApellido()
-				    		);
+				    		+"\n";
 			    }
-			    
 		}
+		return sal;
+	}
+	
+	public String prevencion_bajo_rendimiento() {
+		String sal="";
+		for(Estudiante temp: estudiantes){
+			temp.promedio_general();
+			if(temp.getPromedio() >= 0.5 && temp.getPromedio() < 1.0 && temp.avance_periodo()>=40 && temp.avance_periodo()<=60) {
+				temp.setAyuda(true);
+				sal +="El estudiante "+temp.getNombre()+" "+
+						temp.getApellido()+" "+temp.getDNI()+" necesita ayuda pedagogica";
+			}
+		
+		}
+		return sal;
 	}
 }
