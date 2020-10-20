@@ -8,7 +8,6 @@ public class Estudiante extends Persona/* implements Serializable*/{
 	private float promedio;
 	private ArrayList <Nota> notas = new ArrayList <Nota>();
 	private HashMap <String,Float> promedios = new HashMap <String,Float>();
-	private HashMap <String,Float> porcentajes = new HashMap <String,Float>();
 	private static ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
 	private Grado grado;
 	private boolean ayuda = false;
@@ -104,13 +103,6 @@ public class Estudiante extends Persona/* implements Serializable*/{
 		promedios.put(asi.getNombre(), nro_notas);
 		return nro_notas;
 	}
-	public void avance_asignatura(String asi) {
-		for(Nota temp: notas) {
-			if (temp.getAsignatura().getNombre().equals(asi)){
-				porcentajes.put(asi,temp.getAsignatura().getPorcentaje_avance() );
-			}
-		}
-	}
 	public void promedios() {
 		for(Nota temp: notas){
 			promedio_asignatura(temp.getAsignatura());
@@ -146,6 +138,20 @@ public class Estudiante extends Persona/* implements Serializable*/{
 			return false;
 		}
 	}
+	public float avance_asignatura(String asi) {
+		float por = 0;
+		for(Nota temp: notas) {
+			if (temp.getAsignatura().getNombre().equals(asi)){
+				por= temp.getAsignatura().getPorcentaje_avance() ;
+			}
+		}return por;
+	}
+	public float avance_periodo () {
+		short ayuda=0;
+		for (Map.Entry<String, Float> entry : promedios.entrySet()) {
+			ayuda+=avance_asignatura(entry.getKey());
+		}return ayuda/promedios.size();
+	}
 	public String toString() {
 		return this.getNombre()+"\n"+
 				this.getApellido()+"\n"+
@@ -160,7 +166,7 @@ public class Estudiante extends Persona/* implements Serializable*/{
 	//Metodo Especial
 	public void prevencion_bajo_rendimiento() {
 		this.promedio_general();
-		if(this.promedio >= 2.5 && this.promedio < 3.0) {
+		if(this.promedio >= 0.5 && this.promedio < 1.0 && this.avance_periodo()>=40 && this.avance_periodo()<=60) {
 			this.ayuda=true;
 			System.out.println("El estudiante "+this.getNombre()+" "+
 			this.getApellido()+" "+this.getDNI()+" necesita ayuda pedagogica");
