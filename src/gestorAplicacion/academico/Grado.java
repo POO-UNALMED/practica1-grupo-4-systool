@@ -101,27 +101,32 @@ public class Grado /*implements Serializable*/ {
 	
 	
 	public String cuadro_Honor(){
-		Collections.sort(estudiantes, new Comparator <Estudiante>() {
-			   public int compare(Estudiante obj1, Estudiante obj2) {
-			      return new Float (obj2.getPromedio()).compareTo(obj1.getPromedio());
-			   }
-			});
 		String sal="";
-		if(estudiantes.size()%2==0) {
-			for(int i=0;i<estudiantes.size()/4;i++){
-			    sal+=estudiantes.get(i).getPromedio()+" "+
-			    		estudiantes.get(i).getNombre()+" "+
-			    		estudiantes.get(i).getApellido()
-			    		+"\n";
+		if(estudiantes.size()>0) {
+			Collections.sort(estudiantes, new Comparator <Estudiante>() {
+				   public int compare(Estudiante obj1, Estudiante obj2) {
+				      return new Float (obj2.getPromedio()).compareTo(obj1.getPromedio());
+				   }
+				});
+			
+			if(estudiantes.size()%2==0) {
+				for(int i=0;i<estudiantes.size()/4;i++){
+				    sal+=estudiantes.get(i).getPromedio()+" "+
+				    		estudiantes.get(i).getNombre()+" "+
+				    		estudiantes.get(i).getApellido()
+				    		+"\n";
+				}
 			}
-		}
-		else {
-			for(int i=0;i<estudiantes.size()/3;i++){
-				sal+=estudiantes.get(i).getPromedio()+" "+
-			    		estudiantes.get(i).getNombre()+" "+
-			    		estudiantes.get(i).getApellido()
-			    		+"\n";
+			else {
+				for(int i=0;i<estudiantes.size()/3;i++){
+					sal+=estudiantes.get(i).getPromedio()+" "+
+				    		estudiantes.get(i).getNombre()+" "+
+				    		estudiantes.get(i).getApellido()
+				    		+"\n";
+				}
 			}
+		}else {
+			sal="No tenemos estudiantes en este grado";
 		}
 		return sal;
 		
