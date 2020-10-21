@@ -86,7 +86,7 @@ public class Estudiante extends Persona/* implements Serializable*/{
 	public String misNotas() {
 		String sal="";
 		for(Nota temp: notas){
-		    sal+=temp.getAsignatura()+" "+temp.getCalificacion()+"\n";
+		    sal+=temp.getAsignatura()+" "+promedios.get(temp.getAsignatura().getNombre())+"\n";
 		}
 		return sal;
 	}
