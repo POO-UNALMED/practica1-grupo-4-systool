@@ -175,7 +175,7 @@ public class Estudiante extends Persona/* implements Serializable*/{
 		
 	}
 	*/
-	public String mejores_colegio() {
+	public static String mejores_colegio() {
 		Collections.sort(estudiantes, new Comparator <Estudiante>() {
 			   public int compare(Estudiante obj1, Estudiante obj2) {
 			      return new Float(obj2.getPromedio()).compareTo(obj1.getPromedio());
