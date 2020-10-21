@@ -84,9 +84,26 @@ public class Estudiante extends Persona/* implements Serializable*/{
 	}
 	
 	public String misNotas() {
+		Collections.sort(notas, new Comparator <Nota>() {
+			   public int compare(Nota obj1, Nota obj2) {
+			      return obj1.getAsignatura().getNombre().compareTo(obj2.getAsignatura().getNombre());
+			   }
+			});
 		String sal="";
+		String comp="";
 		for(Nota temp: notas){
-		    sal+=temp.getAsignatura()+" "+promedios.get(temp.getAsignatura().getNombre())+"\n";
+			if(comp=="") {
+				comp=temp.getAsignatura().getNombre();
+				sal+=comp+" "+temp.getCalificacion();
+			}
+			else if (temp.getAsignatura().getNombre()!=comp) {
+				sal+="\n";
+				comp=temp.getAsignatura().getNombre();
+				sal+=comp+" "+temp.getCalificacion();
+			}
+			else if (temp.getAsignatura().getNombre()==comp) {
+				sal+=" "+temp.getAsignatura();
+			}
 		}
 		return sal;
 	}
