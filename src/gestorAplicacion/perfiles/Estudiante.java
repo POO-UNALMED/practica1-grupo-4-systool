@@ -12,8 +12,7 @@ public class Estudiante extends Persona/* implements Serializable*/{
 	private Grado grado;
 	private boolean ayuda = false;
 	
-	public Estudiante (int DNI, String nombres, String apellidos, int edad, String acudiente, 
-			Grado grado){
+	public Estudiante (int DNI, String nombres, String apellidos, int edad, String acudiente){
 		super(DNI, nombres, apellidos, edad);
 		this.setAcudiente(acudiente);
 		estudiantes.add(this);
