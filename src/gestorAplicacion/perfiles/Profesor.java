@@ -1,30 +1,31 @@
 package gestorAplicacion.perfiles;
 import gestorAplicacion.academico.*;
 import java.util.*;
-//import java.io.*;
+import java.io.*;
 
 
-public class Profesor extends Persona /*implements Serializable*/{
+public class Profesor extends Persona implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private String titulo_profesional;
 	private String email;
 	private Grado grado_encargado;
 	private ArrayList<Asignatura> asignaturas = new ArrayList<Asignatura>();
 	private static ArrayList <Profesor> profesores = new ArrayList <Profesor>();
 	
-	public Profesor (int DNI, String nombres, String apellidos, int edad, String titulo,
+	/*public Profesor (int DNI, String nombres, String apellidos, int edad, String titulo,
 			String email, Grado grado){
 		super(DNI, nombres, apellidos, edad);
 		this.setTitulo_profesional(titulo);
 		this.setEmail(email);
 		this.setGrado_encargado(grado);
-		//profesores.add(this);
-	}
+		profesores.add(this);
+	}*/
 	public Profesor (int DNI, String nombres, String apellidos, int edad, String titulo,
 			String email){
 		super(DNI, nombres, apellidos, edad);
 		this.setTitulo_profesional(titulo);
 		this.setEmail(email);
-		//profesores.add(this);
+		profesores.add(this);
 	}
 	
 	public  void setNombre(String nombre) {
@@ -75,14 +76,14 @@ public class Profesor extends Persona /*implements Serializable*/{
 	public void setAsignaturas(ArrayList<Asignatura> asignaturas) {
 		this.asignaturas = asignaturas;
 	}
-	/*
+	
 	public static ArrayList <Profesor> getProfesores() {
 		return profesores;
 	}
 	public static void setProfesores(ArrayList <Profesor> profesores) {
 		Profesor.profesores = profesores;
 	}
-	*/
+	
 	//Metodos
 	public void agregarAsignatura(Asignatura asig) {
 		this.asignaturas.add(asig);

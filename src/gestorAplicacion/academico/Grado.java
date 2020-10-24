@@ -1,24 +1,25 @@
 package gestorAplicacion.academico;
 import java.util.*;
-//import java.io.*;
+import java.io.*;
 
 import gestorAplicacion.perfiles.Estudiante;
 import gestorAplicacion.perfiles.Profesor;
 
-public class Grado /*implements Serializable*/ {
+public class Grado implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private String id;
 	private Profesor profesor_encargado;
 	private ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
 	private ArrayList<Asignatura> asignaturas = new ArrayList<Asignatura>();
-	//private static ArrayList<Grado> grados = new ArrayList<Grado>();
+	private static ArrayList<Grado> grados = new ArrayList<Grado>();
 	
 	//Scanner
-	Scanner reader = new Scanner(System.in);
+	//Scanner reader = new Scanner(System.in);
 	//Constructor
 	public Grado(String id, Profesor lider){
 		this.setId(id);
 		this.setProfesor_encargado(lider);
-		//grados.add(this);
+		grados.add(this);
 	}
 	public Grado(String id){
 		this.setId(id);
@@ -51,13 +52,13 @@ public class Grado /*implements Serializable*/ {
 	public void setAsignaturas(ArrayList<Asignatura> asignaturas) {
 		this.asignaturas = asignaturas;
 	}
-	/*
+	
 	public static ArrayList<Grado> getGrados() {
 		return grados;
 	}
 	public static void setGrados(ArrayList<Grado> grados) {
 		Grado.grados = grados;
-	} */
+	} 
 	
 	//Metodos
 	public void agregarEstudiante(Estudiante nene){
@@ -66,7 +67,7 @@ public class Grado /*implements Serializable*/ {
 	}
 	public void agregarAsignatura(Asignatura asi) {
 		asignaturas.add(asi);
-		asi.agregarGrado(this);
+		//asi.agregarGrado(this);
 	}
 	public void cambiarProfesor(Profesor profe) {
 		this.setProfesor_encargado(profe);

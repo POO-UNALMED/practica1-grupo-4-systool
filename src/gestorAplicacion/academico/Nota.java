@@ -1,21 +1,22 @@
 package gestorAplicacion.academico;
 import gestorAplicacion.perfiles.Estudiante;
-/*import java.util.ArrayList;
-import java.io.*;*/
+import java.util.ArrayList;
+import java.io.*;
 
-public class Nota /*implements Serializable*/{
+public class Nota implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private float calificacion;
 	private String observacion;
 	private Estudiante estudiante;
 	private Asignatura asignatura;
-	//private static ArrayList<Nota> notas = new ArrayList<Nota>();
+	private static ArrayList<Nota> notas = new ArrayList<Nota>();
 	
 	public Nota(float calif, String observacion, Estudiante studen, Asignatura asigna){
 		this.calificacion=calif;
 		this.observacion=observacion;
 		this.estudiante=studen;
 		this.asignatura=asigna;
-		//notas.add(this);
+		notas.add(this);
 	}
 	public Nota(float calif, Estudiante studen, Asignatura asigna){
 		this.calificacion=calif;
@@ -50,12 +51,12 @@ public class Nota /*implements Serializable*/{
 	public void setAsignatura(Asignatura asignatura) {
 		this.asignatura = asignatura;
 	}
-	/*public static ArrayList<Nota> getNotas() {
+	public static ArrayList<Nota> getNotas() {
 		return notas;
 	}
 	public static void setNotas(ArrayList<Nota> notas) {
 		Nota.notas = notas;
-	}*/
+	}
 	
 	/*public Nota agregar_nota(float calif, String observacion, Estudiante studen, Asignatura asigna) {
 		Nota nota = new Nota(calif,observacion,studen,asigna);
