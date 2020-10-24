@@ -80,6 +80,17 @@ public class Asignatura implements Serializable {
 	}
 	//Metodos
 	
+	public String toString(){
+		return "Nombre: "+this.getNombre()+"\n"+
+				"Descripción: "+this.getDescripcion()+"\n"+
+				"Numero de notas: "+this.getNumero_notas()+"\n"+
+				"Porcentaje de avance: "+this.getPorcentaje_avance();
+		
+	}
+	
+	
+	
+	
 	/*public void agregarGrado(Grado grad) {
 		grados.add(grad);
 			/*Este metodo es para poder asignarle a la lista
