@@ -92,6 +92,8 @@ public class Main {
 						System.out.println("");
 						ArrayList<Integer> dnis = new ArrayList<>();
 						for (Estudiante e : estudiantes) {
+							//-----------------------------------------------------------------------------------------------------------
+							//System.out.println(e);
 							dnis.add(e.getDNI());
 							if (e.getDNI() == dni) {
 								e.toString();
