@@ -104,6 +104,13 @@ public class Asignatura implements Serializable {
 			de grados el grado en el que esta la asigantura
 			dandosela desde Grado
 			*/
+		Nota x = new Nota(calif,observacion,studen, this);
+		agregarNota(x);
+		studen.agregarNota(x);
+	}public void crearNota(float calif, Estudiante studen) {
+		Nota x = new Nota(calif,studen, this);
+		agregarNota(x);
+		studen.agregarNota(x);
 	}
 
 	
