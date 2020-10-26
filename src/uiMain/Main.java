@@ -29,7 +29,7 @@ public class Main {
 		ArrayList<Profesor> profesores = Serializacion.getProfesores();
 		ArrayList<Asignatura> asignaturas = Serializacion.getAsignaturas();
 		ArrayList<Grado> grados = Serializacion.getGrados();
-
+		
 		int loop = 0;
 		while (loop == 0) {
 
@@ -111,7 +111,9 @@ public class Main {
 				default:
 					System.out.println("Ingrese una opción válida");
 					break;
+				
 				}
+				break;
 			
 			case 2:
 				System.out.println("1. Crear profesor\r\n" + "2. Ver información profesor \r\n" + "3. Atrás");
@@ -170,7 +172,7 @@ public class Main {
 			case 3:
 				System.out.println("1. Crear grado\r\n" + "2. Crear profesor encargado\r\n" + "3. Cuadro de honor\r\n"
 						+ "4. Prevención de bajo rendimiento\r\n" + "5. Cuadro de superacion\r\n"
-						+ "6. Ver promedios de los grados" + "7. Atrás");
+						+ "6. Ver promedios de los grados\r\n" + "7. Atrás");
 				funcionalidad = reader.nextInt();
 				switch (funcionalidad) {
 				case 1:
@@ -362,7 +364,7 @@ public class Main {
 				loop = -1;
 				break;
 			}
-			break;
+			//break;
 		}
 
 		/*
