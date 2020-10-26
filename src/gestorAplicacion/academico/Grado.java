@@ -99,9 +99,14 @@ public class Grado implements Serializable {
 	}
 	
 	public String toString() {
-		return "Nombre del grado:" + this.getId()+"\n"
-				+"Profesor encargado: "+this.getProfesor_encargado();
-
+		String salida = "";
+		if(this.getProfesor_encargado() != null) {
+			salida = "Nombre del grado:" + this.getId()+"\n"
+					+"Profesor encargado: "+this.getProfesor_encargado();
+		}else {
+			salida = "Nombre del grado:" + this.getId();
+		}
+		return salida;
 	}
 	//Funcionalidades Especiales
 	
