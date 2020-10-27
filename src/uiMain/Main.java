@@ -236,27 +236,44 @@ public class Main {
 					System.out.println("");
 					ArrayList <String> nombres = new ArrayList <>();
 					ArrayList <Integer> est = new ArrayList <>();
-					Grado gr = null;
-					Estudiante e1= null;
+					//Grado gr = null;
+					//Estudiante e1 = null;
 					for (Grado g: grados) {
 						nombres.add(g.getId());
-						if (g.getId() == idg) {
-							gr = g;
+						for(Estudiante es: estudiantes) {
+							est.add(es.getDNI());
+							System.out.println("Entro 7w7");
+							//NO FUNCIONA IF////////////////////////////////////////////////////////////////////
+							if (g.getId() == idg && es.getDNI() == e) {
+								g.agregarEstudiante(es);
+								System.out.println("Estudiante Matriculado exitosamente");
+							}
+							else {
+								System.out.println("Entro aquí");
+							}
+							
 						}
+						
 					}
+					if(!nombres.contains(idg) || !est.contains(e)) {
+						System.out.println("No Funciono");
+					}
+					/*
 					for (Estudiante i: estudiantes) {
 						est.add(i.getDNI());
 						if (i.getDNI() == e) {
 							e1 = i;
 						}
 					}
-					if(est.contains(e) && nombres.contains(idg)) {
+					if(est.contains(e) && nombres.contains(idg) && gr!=null) {
 						gr.agregarEstudiante(e1);
-					}else {
-						System.out.println("Grado o estudiante no existente, por favor vaya a la sección  de creaciones");
-						break;
 					}
+				}*/
 				}
+				else {
+					System.out.println("Grado o estudiante no existente, por favor vaya a la sección  de creaciones");
+					break;
+					}
 				break;
 			case 4:
 				if (grados.size() > 0 && estudiantes.size() > 0) {
