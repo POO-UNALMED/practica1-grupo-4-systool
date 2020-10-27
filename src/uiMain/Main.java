@@ -172,9 +172,10 @@ public class Main {
 
 			break;
 		case 3:
-			System.out.println("1. Crear grado\r\n" + "2. Crear profesor encargado\r\n" + "3. Cuadro de honor\r\n"
-					+ "4. Prevención de bajo rendimiento\r\n" + "5. Cuadro de superacion\r\n"
-					+ "6. Ver promedios de los grados\r\n" + "7. Atrás");
+			System.out.println("1. Crear grado\r\n" + "2. Crear profesor encargado\r\n" +
+					"3. Agregar estudiante"+ "4. Cuadro de honor\r\n"
+					+ "5. Prevención de bajo rendimiento\r\n" + "6. Cuadro de superacion\r\n"
+					+ "7. Ver promedios de los grados\r\n" + "8. Atrás");
 			funcionalidad = reader.nextInt();
 			switch (funcionalidad) {
 			case 1:
@@ -185,27 +186,67 @@ public class Main {
 				System.out.println("Grado creado exitosamente");
 				break;
 			case 2:
-				if (profesores.size() > 0) {
+				if (profesores.size() > 0 && grados.size()>0) {
+					System.out.print("Ingrese el ID del grado: ");
+					String idg = reader.next();
+					System.out.println("");
 					System.out.print("Ingrese el DNI de un profesor registrado: ");
 					int dni = reader.nextInt();
 					System.out.println("");
 					ArrayList<Integer> dnis = new ArrayList<>();
+					Grado gr = null;
+					Profesor pr = null;
 					for (Profesor p : profesores) {
 						dnis.add(p.getDNI());
 						if (p.getDNI() == dni) {
-							System.out.println(p.toString());
+							pr = p;
 						}
 					}
-					if (!dnis.contains(dni)) {
-						System.out.println("El profesor con DNI " + dni + " no se encuentra registrado.");
+					for (Grado g:grados) {
+						if (g.getId() == idg) {
+							gr = g;
+						}
+					}
+					if (gr!=null && pr!=null) {
+						gr.setProfesor_encargado(pr);
+					}else {
+						System.out.println("Grado o profesor no existente, por favor vaya a la sección de creaciones");
 					}
 				} else {
 					System.out.println(
-							"No existen profesores registrados, por favor vaya a la sección de crear profesores.");
+							"No existen profesores o grados registrados, por favor vaya a la sección de creaciones.");
 				}
 
 				break;
 			case 3:
+				if (grados.size()>0 && estudiantes.size()>0) {
+					System.out.print("Ingrese el ID del grado: ");
+					String idg = reader.next();
+					System.out.println("");
+					System.out.print("Ingrese el DNI del estudiante: ");
+					int e = reader.nextInt();
+					System.out.println("");
+					Grado gr = null;
+					Estudiante e1= null;
+					for (Grado g: grados) {
+						if (g.getId() == idg) {
+							gr = g;
+						}
+					}
+					for (Estudiante i: estudiantes) {
+						if (i.getDNI() == e) {
+							e1 = i;
+						}
+					}
+					if(gr!=null || e1!=null) {
+						gr.agregarEstudiante(e1);
+					}else {
+						System.out.println("Grado o estudiante no existente, por favor vaya a la sección  de creaciones");
+						break;
+					}
+				}
+				break;
+			case 4:
 				if (grados.size() > 0 && estudiantes.size() > 0) {
 					System.out.print("Ingrese el ID de un grado registrado: ");
 					String idg = reader.next();
@@ -226,7 +267,7 @@ public class Main {
 				}
 
 				break;
-			case 4:
+			case 5:
 				if (grados.size() > 0 && estudiantes.size() > 0) {
 					System.out.print("Ingrese el ID de un grado registrado: ");
 					String idg = reader.next();
@@ -246,7 +287,7 @@ public class Main {
 							"No existen grados o estudiantes registrados, por favor vaya a las secciones de creaciones.");
 				}
 				break;
-			case 5:
+			case 6:
 				if (grados.size() > 0 && estudiantes.size() > 0) {
 					System.out.print("Ingrese el ID de un grado registrado: ");
 					String idg = reader.next();
@@ -266,7 +307,7 @@ public class Main {
 							"No existen grados o estudiantes registrados, por favor vaya a las secciones de creaciones.");
 				}
 				break;
-			case 6:
+			case 7:
 				if (grados.size() > 0 && estudiantes.size() > 0) {
 					System.out.print("Ingrese el ID de un grado registrado: ");
 					String idg = reader.next();
@@ -286,7 +327,7 @@ public class Main {
 							"No existen grados o estudiantes registrados, por favor vaya a las secciones de creaciones.");
 				}
 				break;
-			case 7:
+			case 8:
 				break;
 			default:
 				System.out.println("Ingrese una opción válida");
