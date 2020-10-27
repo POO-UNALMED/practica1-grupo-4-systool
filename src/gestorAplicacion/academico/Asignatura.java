@@ -1,6 +1,9 @@
 package gestorAplicacion.academico;
 import gestorAplicacion.perfiles.*;
 import java.util.ArrayList;
+
+import BaseDatos.Serializacion;
+
 import java.io.*;
 
 public class Asignatura implements Serializable {
@@ -20,6 +23,7 @@ public class Asignatura implements Serializable {
 		this.setDescripcion(descripcion);
 		this.setNumero_notas(numero);
 		asignaturas.add(this);
+		Serializacion.base_datos();
 	}
 /*
 	public ArrayList <Grado> getGrados() {

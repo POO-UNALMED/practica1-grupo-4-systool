@@ -1,5 +1,8 @@
 package gestorAplicacion.academico;
 import java.util.*;
+
+import BaseDatos.Serializacion;
+
 import java.io.*;
 
 import gestorAplicacion.perfiles.Estudiante;
@@ -20,11 +23,13 @@ public class Grado implements Serializable {
 		this.setId(id);
 		this.setProfesor_encargado(lider);
 		grados.add(this);
+		Serializacion.base_datos();
 	}
 	public Grado(String id){
 		this.setId(id);
 		this.profesor_encargado=null;
-		//grados.add(this);
+		grados.add(this);
+		Serializacion.base_datos();
 	}
 	
 	//Getters y Setters

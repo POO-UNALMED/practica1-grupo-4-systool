@@ -16,6 +16,8 @@ public class Serializacion {
 	private static ArrayList<Asignatura> asignaturas = new ArrayList<>();
 	private static ArrayList<Grado> grados = new ArrayList<>();
 	private static ArrayList<Nota> notas = new ArrayList<>();
+	
+	public Serializacion() {};
 
 	public static ArrayList<Estudiante> getEstudiantes() {
 		return estudiantes;
@@ -117,21 +119,33 @@ public class Serializacion {
 			ObjectInputStream recuperar_estudiantes = new ObjectInputStream(
 					new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\temp\\Estudiantes.txt"));
 			estudiantes = (ArrayList<Estudiante>) recuperar_estudiantes.readObject();
+			ArrayList<Estudiante> temp_e = Estudiante.getEstudiantes();
+			temp_e.addAll(estudiantes);
+			Estudiante.setEstudiantes(temp_e);
 			recuperar_estudiantes.close();
 
 			ObjectInputStream recuperar_profesores = new ObjectInputStream(
 					new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\temp\\Profesores.txt"));
 			profesores = (ArrayList<Profesor>) recuperar_profesores.readObject();
+			ArrayList<Profesor> temp_p = Profesor.getProfesores();
+			temp_p.addAll(profesores);
+			Profesor.setProfesores(temp_p);
 			recuperar_profesores.close();
 
 			ObjectInputStream recuperar_asignaturas = new ObjectInputStream(
 					new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\temp\\Asignaturas.txt"));
 			asignaturas = (ArrayList<Asignatura>) recuperar_asignaturas.readObject();
+			ArrayList<Asignatura> temp_a = Asignatura.getAsignaturas();
+			temp_a.addAll(asignaturas);
+			Asignatura.setAsignaturas(temp_a);
 			recuperar_asignaturas.close();
 
 			ObjectInputStream recuperar_grados = new ObjectInputStream(
 					new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\temp\\Grados.txt"));
 			grados = (ArrayList<Grado>) recuperar_grados.readObject();
+			ArrayList<Grado> temp_g = Grado.getGrados();
+			temp_g.addAll(grados);
+			Grado.setGrados(temp_g);
 			recuperar_grados.close();
 		} catch (Exception e) {
 

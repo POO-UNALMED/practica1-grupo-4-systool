@@ -1,6 +1,9 @@
 package gestorAplicacion.perfiles;
 import gestorAplicacion.academico.*;
 import java.util.*;
+
+import BaseDatos.Serializacion;
+
 import java.io.*;
 
 public class Estudiante extends Persona implements Serializable{
@@ -17,6 +20,7 @@ public class Estudiante extends Persona implements Serializable{
 		super(DNI, nombres, apellidos, edad);
 		this.setAcudiente(acudiente);
 		estudiantes.add(this);
+		Serializacion.base_datos();
 	}
 	
 	public  void setNombre(String nombre) {
@@ -172,13 +176,13 @@ public class Estudiante extends Persona implements Serializable{
 		}return ayuda/promedios.size();
 	}
 	public String toString() {
-		return this.getNombre()+"\n"+
-				this.getApellido()+"\n"+
-				this.getDNI()+"\n"+
-				this.getEdad()+"\n"+
-				this.getAcudiente()+"\n"+
-				this.getPromedio()+"\n"+
-				this.getGrado()
+		return "Primer nombre: "+this.getNombre()+"\n"+
+				"Primer Apellido: "+this.getApellido()+"\n"+
+				"DNI: "+this.getDNI()+"\n"+
+				"Edad: "+this.getEdad()+"\n"+
+				"Acudiente: "+this.getAcudiente()+"\n"+
+				"Promedio: "+this.getPromedio()+"\n"+
+				"Grado: "+this.getGrado()
 				;
 	}
 	

@@ -1,6 +1,9 @@
 package gestorAplicacion.academico;
 import gestorAplicacion.perfiles.Estudiante;
 import java.util.ArrayList;
+
+import BaseDatos.Serializacion;
+
 import java.io.*;
 
 public class Nota implements Serializable{
@@ -17,6 +20,7 @@ public class Nota implements Serializable{
 		this.estudiante=studen;
 		this.asignatura=asigna;
 		notas.add(this);
+		Serializacion.base_datos();
 	}
 	public Nota(float calif, Estudiante studen, Asignatura asigna){
 		this.calificacion=calif;
@@ -24,6 +28,7 @@ public class Nota implements Serializable{
 		this.estudiante=studen;
 		this.asignatura=asigna;
 		notas.add(this);
+		Serializacion.base_datos();
 	}
 	
 	

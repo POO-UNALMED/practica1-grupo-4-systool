@@ -1,6 +1,9 @@
 package gestorAplicacion.perfiles;
 import gestorAplicacion.academico.*;
 import java.util.*;
+
+import BaseDatos.Serializacion;
+
 import java.io.*;
 
 
@@ -12,20 +15,22 @@ public class Profesor extends Persona implements Serializable{
 	private ArrayList<Asignatura> asignaturas = new ArrayList<Asignatura>();
 	private static ArrayList <Profesor> profesores = new ArrayList <Profesor>();
 	
-	/*public Profesor (int DNI, String nombres, String apellidos, int edad, String titulo,
+	public Profesor (int DNI, String nombres, String apellidos, int edad, String titulo,
 			String email, Grado grado){
 		super(DNI, nombres, apellidos, edad);
 		this.setTitulo_profesional(titulo);
 		this.setEmail(email);
 		this.setGrado_encargado(grado);
 		profesores.add(this);
-	}*/
+		Serializacion.base_datos();
+	}
 	public Profesor (int DNI, String nombres, String apellidos, int edad, String titulo,
 			String email){
 		super(DNI, nombres, apellidos, edad);
 		this.setTitulo_profesional(titulo);
 		this.setEmail(email);
 		profesores.add(this);
+		Serializacion.base_datos();
 	}
 	
 	public  void setNombre(String nombre) {
