@@ -96,21 +96,26 @@ public class Estudiante extends Persona implements Serializable{
 			   }
 			});
 		String sal="";
-		String comp="";
-		for(Nota temp: notas){
-			if(comp=="") {
-				comp=temp.getAsignatura().getNombre();
-				sal+=comp+" "+temp.getCalificacion();
+		int comp=0;
+		/*for(Nota temp: notas){
+			if(comp==0) {
+				comp=temp.getAsignatura().getId();
+				sal+=temp.getAsignatura().getNombre()+" "+temp.getCalificacion();
 			}
-			else if (temp.getAsignatura().getNombre()!=comp) {
+			else if (temp.getAsignatura().getId()!=comp) {
+				comp=temp.getAsignatura().getId();
 				sal+="\n";
-				comp=temp.getAsignatura().getNombre();
-				sal+=comp+" "+temp.getCalificacion();
+				sal+=temp.getAsignatura().getNombre()+" "+temp.getCalificacion();
 			}
-			else if (temp.getAsignatura().getNombre()==comp) {
+			else if (temp.getAsignatura().getId()==comp) {
 				sal+=" "+temp.getAsignatura();
 			}
+		}*/
+		for(Nota temp:notas) {
+			sal+=temp.getAsignatura().getNombre() +" "+temp.getCalificacion()+"\n";
 		}
+		
+		
 		return sal;
 	}
 	

@@ -135,6 +135,11 @@ public class Grado implements Serializable {
 	
 	public String cuadro_Honor(){
 		String sal="";
+		for(Estudiante temp: estudiantes) {
+			temp.promedio_general();
+		}
+		
+		
 		if(estudiantes.size()>0) {
 			Collections.sort(estudiantes, new Comparator <Estudiante>() {
 				   public int compare(Estudiante obj1, Estudiante obj2) {

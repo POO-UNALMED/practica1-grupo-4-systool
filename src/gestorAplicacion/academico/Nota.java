@@ -19,6 +19,7 @@ public class Nota implements Serializable{
 		this.observacion=observacion;
 		this.estudiante=studen;
 		this.asignatura=asigna;
+		studen.agregarNota(this);
 		notas.add(this);
 		Serializacion.base_datos();
 	}
@@ -27,6 +28,7 @@ public class Nota implements Serializable{
 		this.observacion=null;
 		this.estudiante=studen;
 		this.asignatura=asigna;
+		studen.agregarNota(this);
 		notas.add(this);
 		Serializacion.base_datos();
 	}

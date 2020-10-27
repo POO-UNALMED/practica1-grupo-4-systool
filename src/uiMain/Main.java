@@ -75,6 +75,7 @@ public class Main {
 					for (Estudiante e : estudiantes) {
 						dnis.add(e.getDNI());
 						if (e.getDNI() == dni) {
+							System.out.println("Sus notas son: ");
 							System.out.println(e.misNotas());
 						}
 					}
@@ -448,11 +449,11 @@ public class Main {
 				break;
 			case 2:
 				if (asignaturas.size() > 0 && estudiantes.size() > 0) {
-					System.out.print("Calificación");
+					System.out.print("Calificación: ");
 					float cal = reader.nextFloat();
 					System.out.println("");
-					System.out.print("Nombre de la asignatura: ");
-					String asignatura = reader.next();
+					System.out.print("ID de la asignatura: ");
+					int asignatura = reader.nextInt();
 					System.out.println("");
 					System.out.print("DNI del estudiante: ");
 					int dni = reader.nextByte();
@@ -460,10 +461,10 @@ public class Main {
 					Asignatura a2 = null;
 					Estudiante e1 = null;
 
-					ArrayList<String> nombres_asign = new ArrayList<>();
+					ArrayList<Integer> id_asign = new ArrayList<>();
 					for (Asignatura a : asignaturas) {
-						nombres_asign.add(a.getNombre());
-						if (a.getNombre() == asignatura) {
+						id_asign.add(a.getId());
+						if (a.getId() == asignatura) {
 							a2 = a;
 						}
 					}
@@ -475,7 +476,7 @@ public class Main {
 						}
 					}
 
-					if (nombres_asign.contains(asignatura) && dnis.contains(dni)) {
+					if (id_asign.contains(asignatura) && dnis.contains(dni)) {
 						new Nota(cal, e1, a2);
 						System.out.println("Nota creada exitosamente");
 						break;
