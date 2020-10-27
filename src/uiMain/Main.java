@@ -220,11 +220,11 @@ public class Main {
 							}
 						}
 
-					}
+					}/*
 					System.out.println(dnis);
 					System.out.println(ids);
 					System.out.println(idg);
-					System.out.println(dni);
+					System.out.println(dni);*/
 					if (!ids.contains(idg) || !dnis.contains(dni)) {
 						System.out.println(
 								"Grado o profesor ingreado no existente, por favor vaya a la sección de creaciones");
@@ -531,11 +531,14 @@ public class Main {
 
 		// Serializacion.base_datos();
 
-		// System.out.println(estudiantes);
-		// System.out.println(profesores);
-		// System.out.println(asignaturas);
+		//System.out.println(estudiantes);
+		//System.out.println(profesores);
+		//System.out.println(asignaturas);
+		//System.out.println(grados);
+
 		// System.out.println(grados.get(0).getProfesor_encargado());
-		// System.out.println(grados.get(0).getId());
+		
+		
 		/*
 		 * for (Grado g: grados) { System.out.println(g.toString()); }
 		 */
