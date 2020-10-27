@@ -50,10 +50,10 @@ public class Main {
 				System.out.print("DNI: ");
 				int cedula = reader.nextInt();
 				System.out.println("");
-				System.out.print("Nombres: ");
+				System.out.print("Primer nombre: ");
 				String nombres = reader.next();
 				System.out.println("");
-				System.out.print("Apellidos: ");
+				System.out.print("Primer apellido: ");
 				String apellidos = reader.next();
 				System.out.println("");
 				System.out.print("Edad: ");
@@ -125,10 +125,10 @@ public class Main {
 				System.out.print("DNI: ");
 				int cedula = reader.nextInt();
 				System.out.println("");
-				System.out.print("Nombres: ");
+				System.out.print("Primer nombre: ");
 				String nombres = reader.next();
 				System.out.println("");
-				System.out.print("Apellidos: ");
+				System.out.print("Primer apellido: ");
 				String apellidos = reader.next();
 				System.out.println("");
 				System.out.print("Edad: ");
@@ -140,7 +140,7 @@ public class Main {
 				System.out.print("E-mail: ");
 				String email = reader.next();
 				System.out.println("");
-				Profesor p1 = new Profesor(cedula, nombres, apellidos, edad, titulo, email);
+				new Profesor(cedula, nombres, apellidos, edad, titulo, email);
 				System.out.println("Profesor creado exitosamente");
 				break;
 			case 2:
@@ -181,7 +181,7 @@ public class Main {
 				System.out.print("Ingrese el ID del grado: ");
 				String id = reader.next();
 				System.out.println("");
-				Grado g1 = new Grado(id);
+				new Grado(id);
 				System.out.println("Grado creado exitosamente");
 				break;
 			case 2:
@@ -302,13 +302,10 @@ public class Main {
 				System.out.print("Nombre");
 				String nombre = reader.next();
 				System.out.println("");
-				System.out.print("Descripción: ");
-				String descrip = reader.next();
-				System.out.println("");
 				System.out.print("Número: ");
 				byte numero = reader.nextByte();
 				System.out.println("");
-				Asignatura a1 = new Asignatura(nombre, descrip, numero);
+				new Asignatura(nombre, numero);
 				System.out.println("Asignatura creada exitosamente");
 				break;
 			case 2:
@@ -341,7 +338,7 @@ public class Main {
 					}
 
 					if (nombres_asign.contains(asignatura) && dnis.contains(dni)) {
-						Nota n1 = new Nota(cal, e1, a2);
+						new Nota(cal, e1, a2);
 						System.out.println("Nota creada exitosamente");
 						break;
 					} else {
@@ -372,6 +369,9 @@ public class Main {
 
 		/*
 		 * NOTAS: EN EL MANUAL DE USUARIO ESPECIFICAR QUE ES EL ID DEL GRADO.
+		 * también decir que sólo se puede ingresar un nombre y un apellido, si se ingresa más que eso, 
+		 * sale error y cancela proceso.
+		 * 
 		 */
 
 		//Profesor p1 = new Profesor(12, "p1", "p11", 95, "ciencias", "p11@unal");

@@ -25,6 +25,12 @@ public class Asignatura implements Serializable {
 		asignaturas.add(this);
 		Serializacion.base_datos();
 	}
+	public Asignatura (String nombre, int numero) {
+		this.setNombre(nombre);
+		this.setNumero_notas(numero);
+		asignaturas.add(this);
+		Serializacion.base_datos();
+	}
 /*
 	public ArrayList <Grado> getGrados() {
 		return grados;
