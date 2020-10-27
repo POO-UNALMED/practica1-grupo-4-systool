@@ -9,6 +9,7 @@ import java.io.*;
 public class Asignatura implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	private int id;
 	private String nombre;
 	private String descripcion;
 	public int numero_notas;
@@ -18,20 +19,28 @@ public class Asignatura implements Serializable {
 	private ArrayList <Nota> calificaciones = new ArrayList <Nota>();
 	private static ArrayList <Asignatura> asignaturas = new ArrayList <Asignatura>();
 
-	public Asignatura (String nombre, String descripcion,int numero) {
+	public Asignatura (int id, String nombre, String descripcion,int numero) {
+		this.setId(id);
 		this.setNombre(nombre);
 		this.setDescripcion(descripcion);
 		this.setNumero_notas(numero);
 		asignaturas.add(this);
 		Serializacion.base_datos();
 	}
-	public Asignatura (String nombre, int numero) {
+	public Asignatura (int id, String nombre, int numero) {
+		this.setId(id);
 		this.setNombre(nombre);
 		this.setNumero_notas(numero);
 		asignaturas.add(this);
 		Serializacion.base_datos();
 	}
-/*
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	/*
 	public ArrayList <Grado> getGrados() {
 		return grados;
 	}
@@ -91,7 +100,8 @@ public class Asignatura implements Serializable {
 	//Metodos
 	
 	public String toString(){
-		return "Nombre: "+this.getNombre()+"\n"+
+		return "ID: "+this.getId()+"\n"+
+				"Nombre: "+this.getNombre()+"\n"+
 				"Descripción: "+this.getDescripcion()+"\n"+
 				"Numero de notas: "+this.getNumero_notas()+"\n"+
 				"Porcentaje de avance: "+this.getPorcentaje_avance();
@@ -120,11 +130,13 @@ public class Asignatura implements Serializable {
 		Nota x = new Nota(calif,observacion,studen, this);
 		agregarNota(x);
 		studen.agregarNota(x);
+		Serializacion.base_datos();
 	}
 	public void crearNota(float calif, Estudiante studen) {
 		Nota x = new Nota(calif,studen, this);
 		agregarNota(x);
 		studen.agregarNota(x);
+		Serializacion.base_datos();
 	}
 
 	

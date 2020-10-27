@@ -63,7 +63,7 @@ public class Main {
 				String acudiente = reader.next();
 				System.out.println("");
 				new Estudiante(cedula, nombres, apellidos, edad, acudiente);
-				
+
 				System.out.println("Estudiante creado exitosamente.");
 				break;
 			case 2:
@@ -180,10 +180,12 @@ public class Main {
 
 			break;
 		case 3:
-			System.out.println("1. Crear grado\r\n" + "2. Crear profesor encargado\r\n" +
-					"3. Agregar estudiante\r\n"+ "4. Cuadro de honor\r\n"
-					+ "5. Prevención de bajo rendimiento\r\n" + "6. Cuadro de superacion\r\n"
-					+ "7. Ver promedios de los grados\r\n" + "8. Atrás");
+			// ------------AGREGAR "AGREGAR ASIGNATURA" y "VER ASIGNATURAS" ambos con
+			// id-----------------------------------------------------------------------------------
+			System.out.println("1. Crear grado\r\n" + "2. Crear profesor encargado\r\n" + "3. Agregar estudiante\r\n"
+					+ "4. Agregar asignatura\r\n" + "5. Ver información de grado\r\n" + "6. Cuadro de honor\r\n"
+					+ "7. Prevención de bajo rendimiento\r\n" + "8. Cuadro de superacion\r\n"
+					+ "9. Ver promedios de los grados\r\n" + "10. Atrás");
 			funcionalidad = reader.nextInt();
 			switch (funcionalidad) {
 			case 1:
@@ -197,7 +199,7 @@ public class Main {
 				System.out.println("Grado creado exitosamente");
 				break;
 			case 2:
-				if (profesores.size() > 0 && grados.size()>0) {
+				if (profesores.size() > 0 && grados.size() > 0) {
 					System.out.print("Ingrese el ID del grado: ");
 					int idg = reader.nextInt();
 					System.out.println("");
@@ -205,26 +207,38 @@ public class Main {
 					int dni = reader.nextInt();
 					System.out.println("");
 					ArrayList<Integer> dnis = new ArrayList<>();
-					Grado gr = null;
-					Profesor pr = null;
-					for (Profesor p : profesores) {
-						dnis.add(p.getDNI());
-						if (p.getDNI() == dni) {
-							pr = p;
+					ArrayList<Integer> ids = new ArrayList<>();
+					// Grado gr = null;
+					// Profesor pr = null;
+					for (Grado g : grados) {
+						ids.add(g.getId());
+						for (Profesor p : profesores) {
+							dnis.add(p.getDNI());
+							if (p.getDNI() == dni && g.getId() == idg) {
+								g.setProfesor_encargado(p);
+								System.out.println("Profesor agregado correctamente.");
+							}
 						}
+
 					}
-					System.out.println(pr);
-					for (Grado g:grados) {
-						if (g.getId() == idg) {
-							gr = g;
-						}
+					System.out.println(dnis);
+					System.out.println(ids);
+					System.out.println(idg);
+					System.out.println(dni);
+					if (!ids.contains(idg) || !dnis.contains(dni)) {
+						System.out.println(
+								"Grado o profesor ingreado no existente, por favor vaya a la sección de creaciones");
 					}
-					System.out.println(gr);
-					if (gr!=null && pr!=null) {
-						gr.setProfesor_encargado(pr);
-					}else {
-						System.out.println("Grado o profesor no existente, por favor vaya a la sección de creaciones");
-					}
+					/*
+					 * System.out.println(pr); for (Grado g:grados) { if (g.getId() == idg) { gr =
+					 * g; } } System.out.println(gr);
+					 */
+					/*
+					 * if (gr!=null && pr!=null) { gr.setProfesor_encargado(pr);
+					 * System.out.println("Profesor agregado correctamente."); }else { System.out.
+					 * println("Grado o profesor no existente, por favor vaya a la sección de creaciones"
+					 * ); }
+					 */
 				} else {
 					System.out.println(
 							"No existen profesores o grados registrados, por favor vaya a la sección de creaciones.");
@@ -232,54 +246,101 @@ public class Main {
 
 				break;
 			case 3:
-				if (grados.size()>0 && estudiantes.size()>0) {
+				if (grados.size() > 0 && estudiantes.size() > 0) {
 					System.out.print("Ingrese el ID del grado: ");
 					int idg = reader.nextInt();
 					System.out.println("");
 					System.out.print("Ingrese el DNI del estudiante: ");
 					int e = reader.nextInt();
 					System.out.println("");
-					ArrayList <Integer> nombres = new ArrayList <>();
-					ArrayList <Integer> est = new ArrayList <>();
-					//Grado gr = null;
-					//Estudiante e1 = null;
-					for (Grado g: grados) { 
+					ArrayList<Integer> nombres = new ArrayList<>();
+					ArrayList<Integer> est = new ArrayList<>();
+					// Grado gr = null;
+					// Estudiante e1 = null;
+					for (Grado g : grados) {
 						nombres.add(g.getId());
-						for(Estudiante es: estudiantes) {
+						for (Estudiante es : estudiantes) {
 							est.add(es.getDNI());
-							//NO FUNCIONA IF////////////////////////////////////////////////////////////////////
+							// NO FUNCIONA
+							// IF////////////////////////////////////////////////////////////////////
 							if (es.getDNI() == e && g.getId() == idg) {
 								g.agregarEstudiante(es);
 								System.out.println("Estudiante Matriculado exitosamente");
 								System.out.println(g.estudiantesInscritos());
 							}
 						}
-					}/*
-					System.out.println(nombres);
-					System.out.println(est);
-					System.out.println(idg);
-					System.out.println(e);*/
-					if(!nombres.contains(idg) || !est.contains(e)) {
-						System.out.println("No Funciono");
+					} /*
+						 * System.out.println(nombres); System.out.println(est);
+						 * System.out.println(idg); System.out.println(e);
+						 */
+					if (!nombres.contains(idg) || !est.contains(e)) {
+						System.out.println(
+								"Grado o estudiante ingreado no existente, por favor vaya a la sección de creaciones");
 					}
 					/*
-					for (Estudiante i: estudiantes) {
-						est.add(i.getDNI());
-						if (i.getDNI() == e) {
-							e1 = i;
+					 * for (Estudiante i: estudiantes) { est.add(i.getDNI()); if (i.getDNI() == e) {
+					 * e1 = i; } } if(est.contains(e) && nombres.contains(idg) && gr!=null) {
+					 * gr.agregarEstudiante(e1); } }
+					 */
+				} else {
+					System.out.println(
+							"No existen estudiantes o grados registrados, por favor vaya a la sección  de creaciones");
+					break;
+				}
+				break;
+			case 4: // agg asignatura
+				if (grados.size() > 0 && asignaturas.size() > 0) {
+					System.out.print("Ingrese el ID del grado: ");
+					int id_g = reader.nextInt();
+					System.out.println("");
+					System.out.print("Ingrese el id de la asignatura: ");
+					int id_a = reader.nextInt();
+					System.out.println("");
+					Grado g = null;
+					Asignatura a = null;
+					for (Grado i : grados) {
+						if (i.getId() == id_g) {
+							g = i;
 						}
 					}
-					if(est.contains(e) && nombres.contains(idg) && gr!=null) {
-						gr.agregarEstudiante(e1);
+					for (Asignatura i : asignaturas) {
+						if (i.getId() == id_a) {
+							a = i;
+						}
 					}
-				}*/
+					if (g != null && a != null) {
+						g.agregarAsignatura(a);
+						System.out.println("Asignatura agregada exitosamente.");
+					} else {
+						System.out.println("Grado o asignatura ingresada no existe.");
+					}
+
+				} else {
+					System.out.println(
+							"No existen asignaturas o grados registrados, por favor vaya a la sección  de creaciones");
 				}
-				else {
-					System.out.println("Grado o estudiante no existente, por favor vaya a la sección  de creaciones");
-					break;
-					}
 				break;
-			case 4:
+			case 5: // ver info
+				if (grados.size() > 0) {
+					System.out.print("Ingrese el ID de un grado registrado: ");
+					int dni = reader.nextInt();
+					System.out.println("");
+					ArrayList<Integer> ids = new ArrayList<>();
+					for (Grado e : grados) {
+						ids.add(e.getId());
+						if (e.getId() == dni) {
+							System.out.println(e.toString());
+						}
+					}
+					if (!ids.contains(dni)) {
+						System.out.println("El grado con ID " + dni + " no se encuentra registrado.");
+					}
+				} else {
+					System.out.println("Usted no ha creado grados, por favor vaya a la sección de crear estudiantes.");
+				}
+
+				break;
+			case 6:
 				if (grados.size() > 0 && estudiantes.size() > 0) {
 					System.out.print("Ingrese el ID de un grado registrado: ");
 					int idg = reader.nextInt();
@@ -300,7 +361,7 @@ public class Main {
 				}
 
 				break;
-			case 5:
+			case 7:
 				if (grados.size() > 0 && estudiantes.size() > 0) {
 					System.out.print("Ingrese el ID de un grado registrado: ");
 					int idg = reader.nextInt();
@@ -320,7 +381,7 @@ public class Main {
 							"No existen grados o estudiantes registrados, por favor vaya a las secciones de creaciones.");
 				}
 				break;
-			case 6:
+			case 8:
 				if (grados.size() > 0 && estudiantes.size() > 0) {
 					System.out.print("Ingrese el ID de un grado registrado: ");
 					int idg = reader.nextInt();
@@ -340,7 +401,7 @@ public class Main {
 							"No existen grados o estudiantes registrados, por favor vaya a las secciones de creaciones.");
 				}
 				break;
-			case 7:
+			case 9:
 				if (grados.size() > 0 && estudiantes.size() > 0) {
 					System.out.print("Ingrese el ID de un grado registrado: ");
 					int idg = reader.nextInt();
@@ -360,7 +421,7 @@ public class Main {
 							"No existen grados o estudiantes registrados, por favor vaya a las secciones de creaciones.");
 				}
 				break;
-			case 8:
+			case 10:
 				break;
 			default:
 				System.out.println("Ingrese una opción válida");
@@ -373,13 +434,16 @@ public class Main {
 			funcionalidad = reader.nextInt();
 			switch (funcionalidad) {
 			case 1:
-				System.out.print("Nombre");
+				System.out.print("ID: ");
+				int id = reader.nextInt();
+				System.out.println("");
+				System.out.print("Nombre: ");
 				String nombre = reader.next();
 				System.out.println("");
-				System.out.print("Número: ");
+				System.out.print("Número de notas: ");
 				byte numero = reader.nextByte();
 				System.out.println("");
-				new Asignatura(nombre, numero);
+				new Asignatura(id, nombre, numero);
 				System.out.println("Asignatura creada exitosamente");
 				break;
 			case 2:
@@ -442,33 +506,39 @@ public class Main {
 		// }
 
 		/*
-		 * NOTAS: EN EL MANUAL DE USUARIO ESPECIFICAR QUE ES EL ID DEL GRADO.
-		 * también decir que sólo se puede ingresar un nombre y un apellido, si se ingresa más que eso, 
-		 * sale error y cancela proceso.
+		 * NOTAS: EN EL MANUAL DE USUARIO ESPECIFICAR QUE ES EL ID DEL GRADO. también
+		 * decir que sólo se puede ingresar un nombre y un apellido, si se ingresa más
+		 * que eso, sale error y cancela proceso.
 		 * 
 		 */
 
-		//Profesor p1 = new Profesor(12, "p1", "p11", 95, "ciencias", "p11@unal");
-		//Grado g1 = new Grado("quinto", p1);
-		/*Asignatura a1 = new Asignatura("esp", "to bien", 5);
-		Estudiante e1 = new Estudiante(1, "d", "g", 10, "ac");
-		Estudiante e2 = new Estudiante(2, "s", "a", 12, "op");
-		
-		Nota n1  = new Nota((float) 4.2, e1, a1);*/
+		// Profesor p1 = new Profesor(12, "p1", "p11", 95, "ciencias", "p11@unal");
+		// Grado g1 = new Grado("quinto", p1);
+		/*
+		 * Asignatura a1 = new Asignatura("esp", "to bien", 5); Estudiante e1 = new
+		 * Estudiante(1, "d", "g", 10, "ac"); Estudiante e2 = new Estudiante(2, "s",
+		 * "a", 12, "op");
+		 * 
+		 * Nota n1 = new Nota((float) 4.2, e1, a1);
+		 */
 
-		//System.out.println(Serializacion.getEstudiantes().get(0).getNombre());
-		
+		// System.out.println(Serializacion.getEstudiantes().get(0).getNombre());
+
 		estudiantes = Serializacion.getEstudiantes();
 		profesores = Serializacion.getProfesores();
 		asignaturas = Serializacion.getAsignaturas();
 		grados = Serializacion.getGrados();
-		
-		//Serializacion.base_datos();
-		
-		//System.out.println(estudiantes);
-		//System.out.println(profesores);
-		//System.out.println(asignaturas);
-		//System.out.println(grados);
+
+		// Serializacion.base_datos();
+
+		// System.out.println(estudiantes);
+		// System.out.println(profesores);
+		// System.out.println(asignaturas);
+		// System.out.println(grados.get(0).getProfesor_encargado());
+		// System.out.println(grados.get(0).getId());
+		/*
+		 * for (Grado g: grados) { System.out.println(g.toString()); }
+		 */
 
 	}
 

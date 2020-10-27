@@ -54,6 +54,7 @@ public class Grado implements Serializable {
 	}
 	public void setProfesor_encargado(Profesor profesor_encargado) {
 		this.profesor_encargado = profesor_encargado;
+		Serializacion.base_datos();
 	}
 	public ArrayList <Estudiante> getEstudiantes() {
 		return estudiantes;
@@ -120,10 +121,12 @@ public class Grado implements Serializable {
 		if(this.getProfesor_encargado() != null) {
 			salida = "ID del grado:" + this.getId()+"\n"
 					+"Nombre del grado:" + this.getNombre()+"\n"
-					+"Profesor encargado: "+this.getProfesor_encargado();
+					+"Profesor encargado: {"+this.getProfesor_encargado()+"}"+"\n"
+					+"Asignaturas: {" + this.asignaturasDelGrado() +"}";
 		}else {
 			salida = "ID del grado:" + this.getId()+"\n"
-					+"Nombre del grado:" + this.getNombre();
+					+"Nombre del grado:" + this.getNombre()+"\n"
+					+"Asignaturas: {" + this.asignaturasDelGrado()+"}";
 		}
 		return salida;
 	}
@@ -214,6 +217,7 @@ public class Grado implements Serializable {
 			}
 		
 		}
+		Serializacion.base_datos();
 		return sal;
 	}
 }
