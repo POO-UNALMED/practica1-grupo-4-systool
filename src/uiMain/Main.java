@@ -350,6 +350,9 @@ public class Main {
 					for (Grado g : grados) {
 						ids.add(g.getId());
 						if (g.getId() == idg) {
+							for (Estudiante e: g.getEstudiantes()) {
+								e.promedio_general();
+							}
 							System.out.println(g.cuadro_Honor());
 						}
 					}
