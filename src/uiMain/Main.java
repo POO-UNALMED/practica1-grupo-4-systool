@@ -78,11 +78,11 @@ public class Main {
 
 				break;
 			case 3:
-				if (estudiantes.size() > 0) {
+				if (estudiantes.size() > 9) {
 					System.out.println(Estudiante.mejores_colegio());
 				} else {
 					System.out.println(
-							"Usted no ha creado estudiantes, por favor vaya a la sección de crear estudiantes.");
+							"Usted no ha creado estudiantes o no tiene minimo 10 estudiantes, por favor vaya a la sección de crear estudiantes.");
 				}
 				break;
 			case 4:
