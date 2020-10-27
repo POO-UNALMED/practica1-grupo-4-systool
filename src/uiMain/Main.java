@@ -68,8 +68,18 @@ public class Main {
 				break;
 			case 2:
 				if (estudiantes.size() > 0) {
+					System.out.print("Ingrese el DNI de un estudiante registrado: ");
+					int dni = reader.nextInt();
+					System.out.println("");
+					ArrayList<Integer> dnis = new ArrayList<>();
 					for (Estudiante e : estudiantes) {
-						System.out.println(e.misNotas());
+						dnis.add(e.getDNI());
+						if (e.getDNI() == dni) {
+							System.out.println(e.misNotas());
+						}
+					}
+					if (!dnis.contains(dni)) {
+						System.out.println("El estudiante con DNI " + dni + " no se encuentra registrado.");
 					}
 				} else {
 					System.out.println(
@@ -92,8 +102,6 @@ public class Main {
 					System.out.println("");
 					ArrayList<Integer> dnis = new ArrayList<>();
 					for (Estudiante e : estudiantes) {
-						// -----------------------------------------------------------------------------------------------------------
-						//System.out.println(e);
 						dnis.add(e.getDNI());
 						if (e.getDNI() == dni) {
 							System.out.println(e.toString());
@@ -173,7 +181,7 @@ public class Main {
 			break;
 		case 3:
 			System.out.println("1. Crear grado\r\n" + "2. Crear profesor encargado\r\n" +
-					"3. Agregar estudiante"+ "4. Cuadro de honor\r\n"
+					"3. Agregar estudiante\r\n"+ "4. Cuadro de honor\r\n"
 					+ "5. Prevención de bajo rendimiento\r\n" + "6. Cuadro de superacion\r\n"
 					+ "7. Ver promedios de los grados\r\n" + "8. Atrás");
 			funcionalidad = reader.nextInt();
@@ -226,19 +234,23 @@ public class Main {
 					System.out.print("Ingrese el DNI del estudiante: ");
 					int e = reader.nextInt();
 					System.out.println("");
+					ArrayList <String> nombres = new ArrayList <>();
+					ArrayList <Integer> est = new ArrayList <>();
 					Grado gr = null;
 					Estudiante e1= null;
 					for (Grado g: grados) {
+						nombres.add(g.getId());
 						if (g.getId() == idg) {
 							gr = g;
 						}
 					}
 					for (Estudiante i: estudiantes) {
+						est.add(i.getDNI());
 						if (i.getDNI() == e) {
 							e1 = i;
 						}
 					}
-					if(gr!=null || e1!=null) {
+					if(est.contains(e) && nombres.contains(idg)) {
 						gr.agregarEstudiante(e1);
 					}else {
 						System.out.println("Grado o estudiante no existente, por favor vaya a la sección  de creaciones");
