@@ -92,17 +92,18 @@ public class Profesor extends Persona implements Serializable{
 	//Metodos
 	public void agregarAsignatura(Asignatura asig) {
 		this.asignaturas.add(asig);
+		Serializacion.base_datos();
 	}
 	public void cambiar_grado(Grado grado) {
 		this.setGrado_encargado(grado);
 	}
 	public String toString() {
-		return this.getNombre()+"\n"+
-				this.getApellido()+"\n"+
-				this.getDNI()+"\n"+
-				this.getEdad()+"\n"+
-				this.getTitulo_profesional()+"\n"+
-				this.getEmail()
+		return "Nombre: "+this.getNombre()+"\n"+
+				"Apellido: "+this.getApellido()+"\n"+
+				"DNI: "+this.getDNI()+"\n"+
+				"Edad: "+this.getEdad()+"\n"+
+				"Título: "+this.getTitulo_profesional()+"\n"+
+				"Email: "+this.getEmail()
 				;
 	}
 	

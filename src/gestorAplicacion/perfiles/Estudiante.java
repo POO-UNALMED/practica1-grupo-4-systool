@@ -84,6 +84,7 @@ public class Estudiante extends Persona implements Serializable{
 
 	public void agregarNota(Nota cero) {
 		this.notas.add(cero);
+		Serializacion.base_datos();
 		//this.prevencion_bajo_rendimiento();
 		
 	}
@@ -124,6 +125,7 @@ public class Estudiante extends Persona implements Serializable{
 		}
 		nro_notas = nro_notas / iter;
 		promedios.put(asi.getNombre(), nro_notas);
+		Serializacion.base_datos();
 		return nro_notas;
 	}
 	public void promedios() {

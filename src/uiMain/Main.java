@@ -188,15 +188,18 @@ public class Main {
 			switch (funcionalidad) {
 			case 1:
 				System.out.print("Ingrese el ID del grado: ");
-				String id = reader.next();
+				int id = reader.nextInt();
 				System.out.println("");
-				new Grado(id);
+				System.out.print("Ingrese el nombre del grado: ");
+				String n = reader.next();
+				System.out.println("");
+				new Grado(id, n);
 				System.out.println("Grado creado exitosamente");
 				break;
 			case 2:
 				if (profesores.size() > 0 && grados.size()>0) {
 					System.out.print("Ingrese el ID del grado: ");
-					String idg = reader.next();
+					int idg = reader.nextInt();
 					System.out.println("");
 					System.out.print("Ingrese el DNI de un profesor registrado: ");
 					int dni = reader.nextInt();
@@ -210,11 +213,13 @@ public class Main {
 							pr = p;
 						}
 					}
+					System.out.println(pr);
 					for (Grado g:grados) {
 						if (g.getId() == idg) {
 							gr = g;
 						}
 					}
+					System.out.println(gr);
 					if (gr!=null && pr!=null) {
 						gr.setProfesor_encargado(pr);
 					}else {
@@ -229,32 +234,31 @@ public class Main {
 			case 3:
 				if (grados.size()>0 && estudiantes.size()>0) {
 					System.out.print("Ingrese el ID del grado: ");
-					String idg = reader.next();
+					int idg = reader.nextInt();
 					System.out.println("");
 					System.out.print("Ingrese el DNI del estudiante: ");
 					int e = reader.nextInt();
 					System.out.println("");
-					ArrayList <String> nombres = new ArrayList <>();
+					ArrayList <Integer> nombres = new ArrayList <>();
 					ArrayList <Integer> est = new ArrayList <>();
 					//Grado gr = null;
 					//Estudiante e1 = null;
-					for (Grado g: grados) {
+					for (Grado g: grados) { 
 						nombres.add(g.getId());
 						for(Estudiante es: estudiantes) {
 							est.add(es.getDNI());
-							System.out.println("Entro 7w7");
 							//NO FUNCIONA IF////////////////////////////////////////////////////////////////////
-							if (g.getId() == idg && es.getDNI() == e) {
+							if (es.getDNI() == e && g.getId() == idg) {
 								g.agregarEstudiante(es);
 								System.out.println("Estudiante Matriculado exitosamente");
+								System.out.println(g.estudiantesInscritos());
 							}
-							else {
-								System.out.println("Entro aquí");
-							}
-							
 						}
-						
-					}
+					}/*
+					System.out.println(nombres);
+					System.out.println(est);
+					System.out.println(idg);
+					System.out.println(e);*/
 					if(!nombres.contains(idg) || !est.contains(e)) {
 						System.out.println("No Funciono");
 					}
@@ -278,9 +282,9 @@ public class Main {
 			case 4:
 				if (grados.size() > 0 && estudiantes.size() > 0) {
 					System.out.print("Ingrese el ID de un grado registrado: ");
-					String idg = reader.next();
+					int idg = reader.nextInt();
 					System.out.println("");
-					ArrayList<String> ids = new ArrayList<>();
+					ArrayList<Integer> ids = new ArrayList<>();
 					for (Grado g : grados) {
 						ids.add(g.getId());
 						if (g.getId() == idg) {
@@ -299,9 +303,9 @@ public class Main {
 			case 5:
 				if (grados.size() > 0 && estudiantes.size() > 0) {
 					System.out.print("Ingrese el ID de un grado registrado: ");
-					String idg = reader.next();
+					int idg = reader.nextInt();
 					System.out.println("");
-					ArrayList<String> ids = new ArrayList<>();
+					ArrayList<Integer> ids = new ArrayList<>();
 					for (Grado g : grados) {
 						ids.add(g.getId());
 						if (g.getId() == idg) {
@@ -319,9 +323,9 @@ public class Main {
 			case 6:
 				if (grados.size() > 0 && estudiantes.size() > 0) {
 					System.out.print("Ingrese el ID de un grado registrado: ");
-					String idg = reader.next();
+					int idg = reader.nextInt();
 					System.out.println("");
-					ArrayList<String> ids = new ArrayList<>();
+					ArrayList<Integer> ids = new ArrayList<>();
 					for (Grado g : grados) {
 						ids.add(g.getId());
 						if (g.getId() == idg) {
@@ -339,9 +343,9 @@ public class Main {
 			case 7:
 				if (grados.size() > 0 && estudiantes.size() > 0) {
 					System.out.print("Ingrese el ID de un grado registrado: ");
-					String idg = reader.next();
+					int idg = reader.nextInt();
 					System.out.println("");
-					ArrayList<String> ids = new ArrayList<>();
+					ArrayList<Integer> ids = new ArrayList<>();
 					for (Grado g : grados) {
 						ids.add(g.getId());
 						if (g.getId() == idg) {

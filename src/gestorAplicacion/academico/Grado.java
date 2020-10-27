@@ -10,7 +10,9 @@ import gestorAplicacion.perfiles.Profesor;
 
 public class Grado implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private String id;
+	
+	private int id;
+	private String nombre;
 	private Profesor profesor_encargado;
 	private ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
 	private ArrayList<Asignatura> asignaturas = new ArrayList<Asignatura>();
@@ -19,25 +21,33 @@ public class Grado implements Serializable {
 	//Scanner
 	//Scanner reader = new Scanner(System.in);
 	//Constructor
-	public Grado(String id, Profesor lider){
+	public Grado(int id, String nombre, Profesor lider){
 		this.setId(id);
+		this.setNombre(nombre);
 		this.setProfesor_encargado(lider);
 		grados.add(this);
 		Serializacion.base_datos();
 	}
-	public Grado(String id){
+	public Grado(int id, String nombre){
 		this.setId(id);
+		this.setNombre(nombre);
 		this.profesor_encargado=null;
 		grados.add(this);
 		Serializacion.base_datos();
 	}
 	
 	//Getters y Setters
-	public String getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 	public Profesor getProfesor_encargado() {
 		return profesor_encargado;
@@ -69,9 +79,11 @@ public class Grado implements Serializable {
 	public void agregarEstudiante(Estudiante nene){
 		estudiantes.add(nene);
 		nene.setGrado(this);
+		Serializacion.base_datos();
 	}
 	public void agregarAsignatura(Asignatura asi) {
 		asignaturas.add(asi);
+		Serializacion.base_datos();
 		//asi.agregarGrado(this);
 	}
 	public void cambiarProfesor(Profesor profe) {
@@ -106,10 +118,12 @@ public class Grado implements Serializable {
 	public String toString() {
 		String salida = "";
 		if(this.getProfesor_encargado() != null) {
-			salida = "Nombre del grado:" + this.getId()+"\n"
+			salida = "ID del grado:" + this.getId()+"\n"
+					+"Nombre del grado:" + this.getNombre()+"\n"
 					+"Profesor encargado: "+this.getProfesor_encargado();
 		}else {
-			salida = "Nombre del grado:" + this.getId();
+			salida = "ID del grado:" + this.getId()+"\n"
+					+"Nombre del grado:" + this.getNombre();
 		}
 		return salida;
 	}

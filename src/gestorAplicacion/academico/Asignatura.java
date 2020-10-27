@@ -110,6 +110,7 @@ public class Asignatura implements Serializable {
 	//}
 	public void agregarNota(Nota cero) {
 		calificaciones.add(cero);
+		Serializacion.base_datos();
 			/*Este metodo es para poder asignarle a la lista
 			de grados el grado en el que esta la asigantura
 			dandosela desde Grado
