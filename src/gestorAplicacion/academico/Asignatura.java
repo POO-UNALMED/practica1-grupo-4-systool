@@ -88,7 +88,6 @@ public class Asignatura implements Serializable {
 		Asignatura.asignaturas = asignaturas;
 	}
 	
-	
 	public float getPorcentaje_avance() {
 		float porcentaje_avance_nota=100/numero_notas;
 		porcentaje_avance=porcentaje_avance_nota*calificaciones.size();
