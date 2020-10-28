@@ -97,7 +97,8 @@ public class Asignatura implements Serializable {
 	public void setPorcentaje_avance(float porcentaje_avance) {
 		this.porcentaje_avance = porcentaje_avance;
 	}
-	//Metodos
+	
+	//MÉTODOS
 	
 	public String toString(){
 		return "ID: "+this.getId()+"\n"+
@@ -105,26 +106,11 @@ public class Asignatura implements Serializable {
 				"Descripción: "+this.getDescripcion()+"\n"+
 				"Numero de notas: "+this.getNumero_notas()+"\n"+
 				"Porcentaje de avance: "+this.getPorcentaje_avance();
-		
-	}
+	} 
 	
-	
-	
-	
-	/*public void agregarGrado(Grado grad) {
-		grados.add(grad);
-			/*Este metodo es para poder asignarle a la lista
-			de grados el grado en el que esta la asigantura
-			dandosela desde Grado
-			*/
-	//}
 	public void agregarNota(Nota cero) {
 		calificaciones.add(cero);
 		Serializacion.base_datos();
-			/*Este metodo es para poder asignarle a la lista
-			de grados el grado en el que esta la asigantura
-			dandosela desde Grado
-			*/
 	}
 	public void crearNota(float calif, String observacion, Estudiante studen) {
 		Nota x = new Nota(calif,observacion,studen, this);
