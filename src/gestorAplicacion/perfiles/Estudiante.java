@@ -157,11 +157,13 @@ public class Estudiante extends Persona implements Serializable{
 			for (Entry<Integer, Float> entry : promedios.entrySet()) {
 				promediog+=entry.getValue();
 			}
-			this.setPromedio(promediog/this.promedios.size());
+			promediog=promediog/this.promedios.size();
+			this.setPromedio(promediog);
 		}
 		else {
 			this.setPromedio(0);
 		}
+		Serializacion.base_datos();
 	}
 	
 	//ESTE MÉTODO RECORRE EL HASHMAP DE PROMEDIOS Y VERIFICA MEDIANTE UNA SECUENCIA DE BOOLEANOS QUE
@@ -229,12 +231,71 @@ public class Estudiante extends Persona implements Serializable{
 			      return new Float(obj2.getPromedio()).compareTo(obj1.getPromedio());
 			   }
 			});
-		String sal=""
-;		for (int i = 0; i < 9; i++) {
-			sal+=estudiantes.get(i).toString() + "\n";
+		String sal="";
+		for (int i = 0; i < 9; i++) {
+			sal+=estudiantes.get(i).getNombre() +" "+estudiantes.get(i).getApellido()+" "+estudiantes.get(i).getPromedio()+"\n";
 		}
 		return sal;
 	}
 	
+	// MÉTODO QUE RETORNA EL PROMEDIO DEL GRADO A PARTIR DE LA SUMA DE TODOS LOS PROMEDIOS DE SUS ESTUDIANTES Y 
+	// DIVIDIRLO POR LA CANTIDAD DE LOS MISMOS.
+	public static float promedio_grado(int graId) {
+		float promG=0;
+		int count=0;
+		for(Estudiante temp: estudiantes){
+			if(temp.getGrado()!=null) {
+			if(temp.getGrado().getId()==graId) {
+				count++;
+				temp.promedio_general();
+				promG = promG + temp.getPromedio();
+				}
+			}
+			else {
+				
+			}
+		}
+		return promG/count; 
+	}
+	
+	// ESTE MÉTODO ORGANIZA LA LISTA DE LOS ESTUDIANTES INSCRITOS EN EL GRADO POR SU PROMEDIO (DESCENDENTE) Y DEPENDIENDO DE LA CANTIDAD
+	// DE ESTUDIANTES, MUESTRA 1/4 Ó UN 1/5 DE SU TOTALIDAD (LOS PRIMEROS), ES DECIR, LOS ESTUDIANTES CON EL PROMEDIO MÁS ALTO.
+	public static String cuadro_Honor(int graId){
+		String sal="";
+		ArrayList <Estudiante> e = new ArrayList<Estudiante>();
+		for(Estudiante temp: estudiantes) {
+			if(temp.getGrado()!=null) {
+				if(temp.getGrado().getId()==graId) {
+					e.add(temp);
+					temp.promedio_general();
+				}
+			}
+			
+		}
+		if (e.size() > 0) {
+			Collections.sort(e, new Comparator<Estudiante>() {
+				public int compare(Estudiante obj1, Estudiante obj2) {
+					return new Float(obj2.getPromedio()).compareTo(obj1.getPromedio());
+				}
+			});
+
+			if (e.size() % 2 == 0) {
+				for (int i = 0; i < e.size() ; i++) {
+					sal += e.get(i).getPromedio() + " " + e.get(i).getNombre() + " "
+							+ e.get(i).getApellido() + "\n";
+				}
+			} /*else {
+				for (int i = 0; i < e.size() ; i++) {
+					sal += estudiantes.get(i).getPromedio() + " " + estudiantes.get(i).getNombre() + " "
+							+ estudiantes.get(i).getApellido() + "\n";
+				}
+			}*/
+		} else {
+			sal = "No tenemos estudiantes en este grado";
+		}
+		return sal;
+
+	}
+
 	
 }

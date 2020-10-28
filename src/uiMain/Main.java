@@ -96,6 +96,9 @@ public class Main {
 
 				break;
 			case 3:
+				for(Estudiante e:estudiantes) {
+					e.promedio_general();
+				}
 				if (estudiantes.size() > 9) {
 					System.out.println(Estudiante.mejores_colegio());
 				} else {
@@ -359,7 +362,7 @@ public class Main {
 						ids.add(g.getId());
 						if (g.getId() == idg) {
 							//System.out.println(g.estudiantesInscritos());
-							System.out.println(g.cuadro_Honor());
+							System.out.println(Estudiante.cuadro_Honor(idg));
 						}
 					}
 					if (!ids.contains(idg)) {
@@ -420,7 +423,7 @@ public class Main {
 					for (Grado g : grados) {
 						ids.add(g.getId());
 						if (g.getId() == idg) {
-							System.out.println(g.promedio_grado());
+							System.out.println("El promedio del grado es: " + Estudiante.promedio_grado(idg));
 						}
 					}
 					if (!ids.contains(idg)) {
