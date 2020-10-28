@@ -187,7 +187,7 @@ public class Estudiante extends Persona implements Serializable{
 		}
 	}
 	
-	/*
+	
 	//ESTE MÉTODO RECIBE EL ID DE UNA ASIGNATURA, Y BUSCA DICHA ASIGNATURA EN LA LISTA DE NOTAS AL ENCONTRARLA
 	//LE PIDE EL PORCENTAJE DE AVANCE DESDE ASIGNATURA Y LO RETORNA.
 	public float avance_asignatura(int asi) {
@@ -197,7 +197,7 @@ public class Estudiante extends Persona implements Serializable{
 				por= temp.getAsignatura().getPorcentaje_avance() ;
 			}
 		}return por;
-	}*/
+	}
 	
 	//ESTE MÉTODO RECORRE EL HASHMAP (USAMOS EL HASHMAP PARA TENER CONSIDERAR SOLO UNA ASIGNATURA, 
 	//YA QUE NO PERMITE KEYS REPETIDAS) PARA PEDIR EL AVANCE DE CADA ASIGNATURA Y LOS PROMEDIA PARA SABER CUAL
