@@ -48,7 +48,8 @@ public class Asignatura implements Serializable {
 		this.grados = grados;
 	}
 	public void agregarGrado(Grado g) {
-		this.grados.add(g);
+		grados.add(g);
+		
 	}
 	public int getNumero_notas() {
 		return numero_notas;

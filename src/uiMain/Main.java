@@ -189,9 +189,9 @@ public class Main {
 			// ------------AGREGAR "AGREGAR ASIGNATURA" y "VER ASIGNATURAS" ambos con
 			// id-----------------------------------------------------------------------------------
 			System.out.println("1. Crear grado\r\n" + "2. Crear profesor encargado\r\n" + "3. Agregar estudiante\r\n"
-					+ "4. Agregar asignatura\r\n" + "5. Ver información de grado\r\n" + "6. Cuadro de honor\r\n"
-					+ "7. Prevención de bajo rendimiento\r\n" 
-					+ "8. Ver promedios de los grados\r\n" + "9. Atrás");
+					+ "4. Ver información de grado\r\n" + "5. Cuadro de honor\r\n"
+					+ "6. Prevención de bajo rendimiento\r\n" 
+					+ "7. Ver promedios de los grados\r\n" + "8. Atrás");
 			funcionalidad = reader.nextInt();
 			switch (funcionalidad) {
 			case 1:
@@ -265,7 +265,8 @@ public class Main {
 					break;
 				}
 				break;
-			case 4: 
+				//NO SE IMPLEMENTO POR ERROR DE NLP(NullPointer) QUE NO SE LOGRO CORREGIR
+			/*case 4: 
 				if (grados.size() > 0 && asignaturas.size() > 0) {
 					System.out.print("Ingrese el ID del grado: ");
 					int id_g = reader.nextInt();
@@ -294,8 +295,9 @@ public class Main {
 							"No existen aignaturas o grados registrados, por favor vaya a la sección  de creaciones");
 					break;
 				}
-				break;
-			case 5: 
+				break;*/
+
+			case 4: 
 				if (grados.size() > 0) {
 					System.out.print("Ingrese el ID de un grado registrado: ");
 					int dni = reader.nextInt();
@@ -315,7 +317,7 @@ public class Main {
 				}
 
 				break;
-			case 6:
+			case 5:
 				if (grados.size() > 0 && estudiantes.size() > 0) {
 					System.out.print("Ingrese el ID de un grado registrado: ");
 					int idg = reader.nextInt();
@@ -336,7 +338,7 @@ public class Main {
 				}
 
 				break;
-			case 7:
+			case 6:
 				if (grados.size() > 0 && estudiantes.size() > 0) {
 					System.out.print("Ingrese el ID de un grado registrado: ");
 					int idg = reader.nextInt();
@@ -377,7 +379,7 @@ public class Main {
 							"No existen grados o estudiantes registrados, por favor vaya a las secciones de creaciones.");
 				}
 				break;*/
-			case 8:
+			case 7:
 				if (grados.size() > 0 && estudiantes.size() > 0) {
 					System.out.print("Ingrese el ID de un grado registrado: ");
 					int idg = reader.nextInt();
@@ -397,7 +399,7 @@ public class Main {
 							"No existen grados o estudiantes registrados, por favor vaya a las secciones de creaciones.");
 				}
 				break;
-			case 9:
+			case 8:
 				break;
 			default:
 				System.out.println("Ingrese una opción válida");
