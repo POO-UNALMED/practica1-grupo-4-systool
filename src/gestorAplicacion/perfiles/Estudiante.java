@@ -55,6 +55,8 @@ public class Estudiante extends Persona implements Serializable{
 	}
 	public float getPromedio() {
 		return promedio;
+	}public void setPromedio(float prom){
+		this.promedio = prom;
 	}
 	public void setNotas(ArrayList <Nota> notas){
 		this.notas = notas;
@@ -142,10 +144,14 @@ public class Estudiante extends Persona implements Serializable{
 	public void promedio_general() {
 		float promediog=0;
 		promedios();
-		for (Map.Entry<String, Float> entry : promedios.entrySet()) {
-		    promediog+=entry.getValue();
+		if (promedios.size()>0) {
+			for (Map.Entry<String, Float> entry : promedios.entrySet()) {
+			    promediog+=entry.getValue();
+			}
+			this.setPromedio(promediog/this.promedios.size());
+		}else {
+			this.setPromedio(0);
 		}
-		this.promedio=promediog/this.promedios.size();
 	}
 	public Boolean porcentaje_periodo() {
 		int x=0,y=0;
