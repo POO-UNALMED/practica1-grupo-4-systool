@@ -65,12 +65,4 @@ public class Nota implements Serializable{
 		Nota.notas = notas;
 	}
 	
-	/*public Nota agregar_nota(float calif, String observacion, Estudiante studen, Asignatura asigna) {
-		Nota nota = new Nota(calif,observacion,studen,asigna);
-		return nota;
-	}
-	public Nota agregar_nota(float calif, Estudiante studen, Asignatura asigna) {
-		Nota nota = new Nota(calif,studen,asigna);
-		return nota;
-	}*/
 }
