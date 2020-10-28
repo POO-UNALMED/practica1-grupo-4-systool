@@ -13,20 +13,20 @@ Daniela Guardia Cuervo
 Cristian David Quinchia Ramirez  
 
 # Componentes del módulo:
--src:
-  -Paquete BaseDatos:
-    *Clase Serializacion.java
-    *Directorio temp
-  -Paquete gestorAplicacion:
-    -academico:
-      *Asignatura.java
-      *Grado.java
-      *Nota.java
-    -perfiles:
-      *Persona.java
-      *Estudiante.java
-      *Profesor.java
-  -Paquete uiMain:
-    *Main.java
--star.bat
--SYSTOOL.jar
+-src:  
+  -Paquete BaseDatos:  
+    *Clase Serializacion.java  
+    *Directorio temp  
+  -Paquete gestorAplicacion:  
+    -academico:  
+      *Asignatura.java  
+      *Grado.java  
+      *Nota.java  
+    -perfiles:  
+      *Persona.java  
+      *Estudiante.java  
+      *Profesor.java  
+  -Paquete uiMain:  
+    *Main.java  
+-star.bat  
+-SYSTOOL.jar  
