@@ -25,11 +25,17 @@ public class Main {
 	public static void main(String[] args) {
 
 		Serializacion.b2();
+		
 		ArrayList<Estudiante> estudiantes = Serializacion.getEstudiantes();
 		ArrayList<Profesor> profesores = Serializacion.getProfesores();
 		ArrayList<Asignatura> asignaturas = Serializacion.getAsignaturas();
 		ArrayList<Grado> grados = Serializacion.getGrados();
-
+		/*
+		ArrayList<Estudiante> estudiantes = Estudiante.getEstudiantes();
+		ArrayList<Profesor> profesores = Profesor.getProfesores();
+		ArrayList<Asignatura> asignaturas = Asignatura.getAsignaturas();
+		ArrayList<Grado> grados = Grado.getGrados();
+		*/
 		//int loop = 0;
 		//while (loop == 0) {
 
@@ -106,7 +112,7 @@ public class Main {
 					for (Estudiante e : estudiantes) {
 						dnis.add(e.getDNI());
 						if (e.getDNI() == dni) {
-							e.promedio_general();
+							//e.promedio_general();
 							System.out.println(e.toString());
 							
 						}
@@ -527,7 +533,6 @@ public class Main {
 		 */
 
 		// System.out.println(Serializacion.getEstudiantes().get(0).getNombre());
-		System.out.println(estudiantes==Estudiante.getEstudiantes());
 		estudiantes = Serializacion.getEstudiantes();
 		profesores = Serializacion.getProfesores();
 		asignaturas = Serializacion.getAsignaturas();

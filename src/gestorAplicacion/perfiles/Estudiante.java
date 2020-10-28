@@ -195,6 +195,7 @@ public class Estudiante extends Persona implements Serializable{
 		}return ayuda/promedios.size();
 	}
 	public String toString() {
+		this.promedio_general();
 		return "Primer nombre: "+this.getNombre()+"\n"+
 				"Primer Apellido: "+this.getApellido()+"\n"+
 				"DNI: "+this.getDNI()+"\n"+

@@ -131,6 +131,7 @@ public class Grado implements Serializable {
 		String sal="";
 		for(Estudiante temp: this.estudiantes) {
 			temp.promedio_general();
+			System.out.println(temp.toString());
 		}
 		if(this.estudiantes.size()>0) {
 			Collections.sort(estudiantes, new Comparator <Estudiante>() {
