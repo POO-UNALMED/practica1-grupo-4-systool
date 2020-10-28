@@ -19,9 +19,6 @@ public class Grado implements Serializable {
 	private ArrayList<Asignatura> asignaturas = new ArrayList<Asignatura>();
 	private static ArrayList<Grado> grados = new ArrayList<Grado>();
 
-	// Scanner
-	// Scanner reader = new Scanner(System.in);
-	// Constructor
 	public Grado(int id, String nombre, Profesor lider) {
 		this.setId(id);
 		this.setNombre(nombre);
@@ -162,8 +159,7 @@ public class Grado implements Serializable {
 	}
 	// ------------------------------------------ FUNCIONALIDADES ESPECIALES ------------------------------------------
 
-	// ESTE MÉTODO ORGANIZA LA LISTA DE LOS ESTUDIANTES INSCRITOS EN EL GRADO POR SU PROMEDIO (DESCENDENTE) Y DEPENDIENDO DE LA CANTIDAD
-	// DE ESTUDIANTES, MUESTRA 1/4 Ó UN 1/5 DE SU TOTALIDAD (LOS PRIMEROS), ES DECIR, LOS ESTUDIANTES CON EL PROMEDIO MÁS ALTO.
+	
 	public String cuadro_Honor() {
 		String sal = "";
 		for (Estudiante temp : this.estudiantes) {
@@ -204,8 +200,7 @@ public class Grado implements Serializable {
 
 	}
 
-	// MÉTODO QUE RETORNA EL PROMEDIO DEL GRADO A PARTIR DE LA SUMA DE TODOS LOS PROMEDIOS DE SUS ESTUDIANTES Y 
-	// DIVIDIRLO POR LA CANTIDAD DE LOS MISMOS.
+	
 	public float promedio_grado() {
 		float promG = 0;
 
@@ -213,25 +208,6 @@ public class Grado implements Serializable {
 			promG += temp.getPromedio();
 		}
 		return promG / this.estudiantes.size();
-	}
-
-	// ESTE MÉTODO VERIFICA SI EL PROCENTAJE DE CADA ESTUDIANTE EN UN GRADO ES BAJO EN UN DETERMINADO MOMENTO DEL AÑO ESCOLAR
-	// E IMPRIME A DICHO ESTUDIANTE QUE CUMPLA ESTO, ES DECIR, MOSTRARÁ A LOS ESTUDIANTES QUE VAYAN MAL EN EL PROMEDIO GENERAL
-	// PARA ASÍ SUGERIRLE UNA AYUDA PEDAGÓGICA Y LOGRE RECUPERAR O SUBIR DICHO PROMEDIO PARA QUE NO PIERDA EL AÑO.
-	public String prevencion_bajo_rendimiento() {
-		String sal = "";
-		for (Estudiante temp : estudiantes) {
-			temp.promedio_general();
-			if (temp.getPromedio() >= 0.5 && temp.getPromedio() < 1.0 && temp.avance_periodo() >= 40
-					&& temp.avance_periodo() <= 60) {
-				temp.setAyuda(true);
-				sal += "El estudiante " + temp.getNombre() + " " + temp.getApellido() + " " + temp.getDNI()
-						+ " necesita ayuda pedagogica" + "\n";
-			}
-
-		}
-		Serializacion.base_datos();
-		return sal;
 	}
 
 	// ESTE MÉTODO BUSCA E IMPRIME A LOS ESTUDIANTES QUE NECESITARON AYUDA PEDAGÓGICA, ES DECIR, QUE IBAN MAL EN UN DETERMINADO 

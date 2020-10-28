@@ -16,6 +16,7 @@ public class Estudiante extends Persona implements Serializable{
 	private static ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
 	private Grado grado;
 	private boolean ayuda = false;
+	private final float rango= 3;
 	
 	public Estudiante (int DNI, String nombres, String apellidos, int edad, String acudiente){
 		super(DNI, nombres, apellidos, edad);
@@ -77,6 +78,10 @@ public class Estudiante extends Persona implements Serializable{
 	public void setAyuda(boolean ayuda) {
 		this.ayuda = ayuda;
 	}
+	public float getRango() {
+		return rango;
+	}
+
 	public static ArrayList<Estudiante> getEstudiantes() {
 		return estudiantes;
 	}
@@ -206,10 +211,16 @@ public class Estudiante extends Persona implements Serializable{
 	//YA QUE NO PERMITE KEYS REPETIDAS) PARA PEDIR EL AVANCE DE CADA ASIGNATURA Y LOS PROMEDIA PARA SABER CUAL
 	//ES EL PORCENTAJE DE AVANCE DEL PERIODO.
 	public float avance_periodo () {
+		float aja = 0;
 		short ayuda=0;
 		for (Entry<Integer, Float> entry : promedios.entrySet()) {
 			ayuda+=avance_asignatura(entry.getKey());
-		}return ayuda/promedios.size();
+		}
+		if(promedios.size()>0) {
+			aja=ayuda/promedios.size();
+		}
+	
+		return aja;
 	}
 	public String toString() {
 		this.promedio_general();
@@ -296,6 +307,39 @@ public class Estudiante extends Persona implements Serializable{
 		return sal;
 
 	}
+	
+	
+	
+	// ESTE MÉTODO VERIFICA SI EL PROCENTAJE DE CADA ESTUDIANTE EN UN GRADO ES BAJO EN UN DETERMINADO MOMENTO DEL AÑO ESCOLAR
+	// E IMPRIME A DICHO ESTUDIANTE QUE CUMPLA ESTO, ES DECIR, MOSTRARÁ A LOS ESTUDIANTES QUE VAYAN MAL EN EL PROMEDIO GENERAL
+	// PARA ASÍ SUGERIRLE UNA AYUDA PEDAGÓGICA Y LOGRE RECUPERAR O SUBIR DICHO PROMEDIO PARA QUE NO PIERDA EL AÑO.
+	public static String prevencion_bajo_rendimiento(int graId) {
+		String sal = "";
+		ArrayList <Estudiante> e = new ArrayList<Estudiante>();
+		for(Estudiante temp: estudiantes) {
+			if(temp.getGrado()!=null) {
+				if(temp.getGrado().getId()==graId) {
+					e.add(temp);
+					temp.promedio_general();
+				}
+			}
+		}
+		for (Estudiante temp : e) {
+			if (temp.getPromedio() >= 0 && temp.getPromedio() < temp.getRango()) {
+				temp.setAyuda(true);
+				sal += "El estudiante " + temp.getNombre() + " " + temp.getApellido() + " " + temp.getDNI()
+						+ " necesita ayuda pedagógica" + "\n";
+			}
+			else if (temp.getPromedio() >= temp.getRango()) {
+				sal += "El estudiante " + temp.getNombre() + " " + temp.getApellido() + " " + temp.getDNI()
+						+ " NO necesita ayuda pedagógica" + "\n";
+			}
+		}
+		Serializacion.base_datos();
+		return sal;
+	}
+	
+	
 
 	
 }

@@ -36,8 +36,8 @@ public class Main {
 		ArrayList<Asignatura> asignaturas = Asignatura.getAsignaturas();
 		ArrayList<Grado> grados = Grado.getGrados();
 		*/
-		//int loop = 0;
-		//while (loop == 0) {
+		int loop = 0;
+		while (loop == 0) {
 
 		inicio();
 		@SuppressWarnings("resource")
@@ -383,7 +383,7 @@ public class Main {
 					for (Grado g : grados) {
 						ids.add(g.getId());
 						if (g.getId() == idg) {
-							System.out.println(g.prevencion_bajo_rendimiento());
+							System.out.println(Estudiante.prevencion_bajo_rendimiento(idg));
 						}
 					}
 					if (!ids.contains(idg)) {
@@ -512,30 +512,12 @@ public class Main {
 
 			break;
 		case 5: // SALIR
-			//loop = -1;
+			loop = -1;
 			break;
 			}
 
-		//}
+		}
 
-		/*
-		 * NOTAS: EN EL MANUAL DE USUARIO ESPECIFICAR QUE ES EL ID DEL GRADO. también
-		 * decir que sólo se puede ingresar un nombre y un apellido, si se ingresa más
-		 * que eso, sale error y cancela proceso.
-		 * 
-		 */
-
-		// Profesor p1 = new Profesor(12, "p1", "p11", 95, "ciencias", "p11@unal");
-		// Grado g1 = new Grado("quinto", p1);
-		/*
-		 * Asignatura a1 = new Asignatura("esp", "to bien", 5); Estudiante e1 = new
-		 * Estudiante(1, "d", "g", 10, "ac"); Estudiante e2 = new Estudiante(2, "s",
-		 * "a", 12, "op");
-		 * 
-		 * Nota n1 = new Nota((float) 4.2, e1, a1);
-		 */
-
-		// System.out.println(Serializacion.getEstudiantes().get(0).getNombre());
 		estudiantes = Serializacion.getEstudiantes();
 		profesores = Serializacion.getProfesores();
 		asignaturas = Serializacion.getAsignaturas();

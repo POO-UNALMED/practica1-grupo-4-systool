@@ -90,6 +90,7 @@ public class Asignatura implements Serializable {
 	}
 	
 	public float getPorcentaje_avance() {
+		
 		for (Grado grad:grados) {
 			grad.porcentaAsignatura(this);
 		}
