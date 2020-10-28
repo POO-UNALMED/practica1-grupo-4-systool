@@ -106,20 +106,6 @@ public class Estudiante extends Persona implements Serializable{
 			});
 		String sal="";
 		int comp=0;
-		/*for(Nota temp: notas){
-			if(comp==0) {
-				comp=temp.getAsignatura().getId();
-				sal+=temp.getAsignatura().getNombre()+" "+temp.getCalificacion();
-			}
-			else if (temp.getAsignatura().getId()!=comp) {
-				comp=temp.getAsignatura().getId();
-				sal+="\n";
-				sal+=temp.getAsignatura().getNombre()+" "+temp.getCalificacion();
-			}
-			else if (temp.getAsignatura().getId()==comp) {
-				sal+=" "+temp.getAsignatura();
-			}
-		}*/
 		for(Nota temp:notas) {
 			sal+=temp.getAsignatura().getNombre() +" "+temp.getCalificacion()+"\n";
 		}
@@ -295,12 +281,7 @@ public class Estudiante extends Persona implements Serializable{
 					sal += e.get(i).getPromedio() + " " + e.get(i).getNombre() + " "
 							+ e.get(i).getApellido() + "\n";
 				}
-			} /*else {
-				for (int i = 0; i < e.size() ; i++) {
-					sal += estudiantes.get(i).getPromedio() + " " + estudiantes.get(i).getNombre() + " "
-							+ estudiantes.get(i).getApellido() + "\n";
-				}
-			}*/
+			} 
 		} else {
 			sal = "No tenemos estudiantes en este grado";
 		}

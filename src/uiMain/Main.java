@@ -21,7 +21,6 @@ public class Main {
 		System.out.println("5. Salir");
 	}
 
-	//@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 
 		Serializacion.b2();
@@ -30,12 +29,7 @@ public class Main {
 		ArrayList<Profesor> profesores = Serializacion.getProfesores();
 		ArrayList<Asignatura> asignaturas = Serializacion.getAsignaturas();
 		ArrayList<Grado> grados = Serializacion.getGrados();
-		/*
-		ArrayList<Estudiante> estudiantes = Estudiante.getEstudiantes();
-		ArrayList<Profesor> profesores = Profesor.getProfesores();
-		ArrayList<Asignatura> asignaturas = Asignatura.getAsignaturas();
-		ArrayList<Grado> grados = Grado.getGrados();
-		*/
+		
 		int loop = 0;
 		while (loop == 0) {
 
@@ -115,7 +109,6 @@ public class Main {
 					for (Estudiante e : estudiantes) {
 						dnis.add(e.getDNI());
 						if (e.getDNI() == dni) {
-							//e.promedio_general();
 							System.out.println(e.toString());
 							
 						}
@@ -197,8 +190,8 @@ public class Main {
 			// id-----------------------------------------------------------------------------------
 			System.out.println("1. Crear grado\r\n" + "2. Crear profesor encargado\r\n" + "3. Agregar estudiante\r\n"
 					+ "4. Agregar asignatura\r\n" + "5. Ver información de grado\r\n" + "6. Cuadro de honor\r\n"
-					+ "7. Prevención de bajo rendimiento\r\n" + "8. Cuadro de superacion\r\n"
-					+ "9. Ver promedios de los grados\r\n" + "10. Atrás");
+					+ "7. Prevención de bajo rendimiento\r\n" 
+					+ "8. Ver promedios de los grados\r\n" + "9. Atrás");
 			funcionalidad = reader.nextInt();
 			switch (funcionalidad) {
 			case 1:
@@ -221,8 +214,6 @@ public class Main {
 					System.out.println("");
 					ArrayList<Integer> dnis = new ArrayList<>();
 					ArrayList<Integer> ids = new ArrayList<>();
-					// Grado gr = null;
-					// Profesor pr = null;
 					for (Grado g : grados) {
 						ids.add(g.getId());
 						for (Profesor p : profesores) {
@@ -233,25 +224,11 @@ public class Main {
 							}
 						}
 
-					}/*
-					System.out.println(dnis);
-					System.out.println(ids);
-					System.out.println(idg);
-					System.out.println(dni);*/
+					}
 					if (!ids.contains(idg) || !dnis.contains(dni)) {
 						System.out.println(
 								"Grado o profesor ingreado no existente, por favor vaya a la sección de creaciones");
 					}
-					/*
-					 * System.out.println(pr); for (Grado g:grados) { if (g.getId() == idg) { gr =
-					 * g; } } System.out.println(gr);
-					 */
-					/*
-					 * if (gr!=null && pr!=null) { gr.setProfesor_encargado(pr);
-					 * System.out.println("Profesor agregado correctamente."); }else { System.out.
-					 * println("Grado o profesor no existente, por favor vaya a la sección de creaciones"
-					 * ); }
-					 */
 				} else {
 					System.out.println(
 							"No existen profesores o grados registrados, por favor vaya a la sección de creaciones.");
@@ -268,39 +245,27 @@ public class Main {
 					System.out.println("");
 					ArrayList<Integer> nombres = new ArrayList<>();
 					ArrayList<Integer> est = new ArrayList<>();
-					// Grado gr = null;
-					// Estudiante e1 = null;
 					for (Grado g : grados) {
 						nombres.add(g.getId());
 						for (Estudiante es : estudiantes) {
 							est.add(es.getDNI());
-							// NO FUNCIONA
-							// IF////////////////////////////////////////////////////////////////////
 							if (es.getDNI() == e && g.getId() == idg) {
 								g.agregarEstudiante(es);
 								System.out.println("Estudiante Matriculado exitosamente");
 							}
 						}
-					} /*
-						 * System.out.println(nombres); System.out.println(est);
-						 * System.out.println(idg); System.out.println(e);
-						 */
+					} 
 					if (!nombres.contains(idg) || !est.contains(e)) {
 						System.out.println(
 								"Grado o estudiante ingreado no existente, por favor vaya a la sección de creaciones");
 					}
-					/*
-					 * for (Estudiante i: estudiantes) { est.add(i.getDNI()); if (i.getDNI() == e) {
-					 * e1 = i; } } if(est.contains(e) && nombres.contains(idg) && gr!=null) {
-					 * gr.agregarEstudiante(e1); } }
-					 */
 				} else {
 					System.out.println(
 							"No existen estudiantes o grados registrados, por favor vaya a la sección  de creaciones");
 					break;
 				}
 				break;
-			case 4: // agg asignatura
+			case 4: 
 				if (grados.size() > 0 && asignaturas.size() > 0) {
 					System.out.print("Ingrese el ID del grado: ");
 					int id_g = reader.nextInt();
@@ -308,31 +273,29 @@ public class Main {
 					System.out.print("Ingrese el id de la asignatura: ");
 					int id_a = reader.nextInt();
 					System.out.println("");
-					Grado g = null;
-					Asignatura a = null;
-					for (Grado i : grados) {
-						if (i.getId() == id_g) {
-							g = i;
+					ArrayList<Integer> idg = new ArrayList<>();
+					ArrayList<Integer> ida = new ArrayList<>();
+					for (Grado g : grados) {
+						idg.add(g.getId()); 
+						for (Asignatura a : asignaturas) {
+							ida.add(a.getId());
+							if (a.getId() == id_a && g.getId() == id_g) {
+								g.agregarAsignatura(a);
+								System.out.println("Asignatura agregada exitosamente");
+							}
 						}
+					} 
+					if (!idg.contains(id_g) || !ida.contains(id_a)) {
+						System.out.println(
+								"Grado o asignatura ingreadoa no existente, por favor vaya a la sección de creaciones");
 					}
-					for (Asignatura i : asignaturas) {
-						if (i.getId() == id_a) {
-							a = i;
-						}
-					}
-					if (g != null && a != null) {
-						g.agregarAsignatura(a);
-						System.out.println("Asignatura agregada exitosamente.");
-					} else {
-						System.out.println("Grado o asignatura ingresada no existe.");
-					}
-
 				} else {
 					System.out.println(
-							"No existen asignaturas o grados registrados, por favor vaya a la sección  de creaciones");
+							"No existen aignaturas o grados registrados, por favor vaya a la sección  de creaciones");
+					break;
 				}
 				break;
-			case 5: // ver info
+			case 5: 
 				if (grados.size() > 0) {
 					System.out.print("Ingrese el ID de un grado registrado: ");
 					int dni = reader.nextInt();
@@ -361,7 +324,6 @@ public class Main {
 					for (Grado g : grados) {
 						ids.add(g.getId());
 						if (g.getId() == idg) {
-							//System.out.println(g.estudiantesInscritos());
 							System.out.println(Estudiante.cuadro_Honor(idg));
 						}
 					}
@@ -394,6 +356,7 @@ public class Main {
 							"No existen grados o estudiantes registrados, por favor vaya a las secciones de creaciones.");
 				}
 				break;
+			/*
 			case 8:
 				if (grados.size() > 0 && estudiantes.size() > 0) {
 					System.out.print("Ingrese el ID de un grado registrado: ");
@@ -413,8 +376,8 @@ public class Main {
 					System.out.println(
 							"No existen grados o estudiantes registrados, por favor vaya a las secciones de creaciones.");
 				}
-				break;
-			case 9:
+				break;*/
+			case 8:
 				if (grados.size() > 0 && estudiantes.size() > 0) {
 					System.out.print("Ingrese el ID de un grado registrado: ");
 					int idg = reader.nextInt();
@@ -434,7 +397,7 @@ public class Main {
 							"No existen grados o estudiantes registrados, por favor vaya a las secciones de creaciones.");
 				}
 				break;
-			case 10:
+			case 9:
 				break;
 			default:
 				System.out.println("Ingrese una opción válida");
@@ -525,18 +488,7 @@ public class Main {
 
 		//Serializacion.base_datos();
 		
-		//System.out.println(estudiantes);
-		//System.out.println(profesores);
-		//System.out.println(asignaturas);
-		//System.out.println(grados);
-
-		// System.out.println(grados.get(0).getProfesor_encargado());
-		
-		
-		/*
-		 * for (Grado g: grados) { System.out.println(g.toString()); }
-		 */
-
+		System.out.println("Hasta pronto <3");
 	}
 
 }
