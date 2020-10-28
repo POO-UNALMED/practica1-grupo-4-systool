@@ -90,12 +90,6 @@ public class Grado implements Serializable {
 	public void cambiarProfesor(Profesor profe) {
 		this.setProfesor_encargado(profe);
 	}
-	public void elimarAsignatura(Asignatura asi, String index) {
-		
-	}
-	public void eliminarEstudiante(Estudiante nene, String index) {
-		
-	}
 	public String estudiantesInscritos() {
 		Collections.sort(estudiantes, new Comparator <Estudiante>() {
 			   public int compare(Estudiante obj1, Estudiante obj2) {
@@ -135,20 +129,18 @@ public class Grado implements Serializable {
 	
 	public String cuadro_Honor(){
 		String sal="";
-		for(Estudiante temp: estudiantes) {
+		for(Estudiante temp: this.estudiantes) {
 			temp.promedio_general();
 		}
-		
-		
-		if(estudiantes.size()>0) {
+		if(this.estudiantes.size()>0) {
 			Collections.sort(estudiantes, new Comparator <Estudiante>() {
 				   public int compare(Estudiante obj1, Estudiante obj2) {
 				      return new Float (obj2.getPromedio()).compareTo(obj1.getPromedio());
 				   }
 				});
 			
-			if(estudiantes.size()%2==0) {
-				for(int i=0;i<estudiantes.size()/4;i++){
+			if(this.estudiantes.size()%2==0) {
+				for(int i=0;i<this.estudiantes.size()/4;i++){
 				    sal+=estudiantes.get(i).getPromedio()+" "+
 				    		estudiantes.get(i).getNombre()+" "+
 				    		estudiantes.get(i).getApellido()
@@ -156,7 +148,7 @@ public class Grado implements Serializable {
 				}
 			}
 			else {
-				for(int i=0;i<estudiantes.size()/3;i++){
+				for(int i=0;i<this.estudiantes.size()/3;i++){
 					sal+=estudiantes.get(i).getPromedio()+" "+
 				    		estudiantes.get(i).getNombre()+" "+
 				    		estudiantes.get(i).getApellido()

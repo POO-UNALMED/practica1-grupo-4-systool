@@ -60,6 +60,9 @@ public class Serializacion {
 	}
 
 	@SuppressWarnings("unchecked")
+	/*El metodo base de datos se encarga de guardar los objetos, los cuales seran serealziados
+	 */
+	
 	public static void base_datos() {
 		try {
 			File archivo = new File("");
@@ -108,22 +111,19 @@ public class Serializacion {
 			 */
 
 		} catch (Exception e) {
+			System.out.println(e);
 		}
 	}
 
 	@SuppressWarnings("unchecked")
+	/*Es metodo b2 es el encargado de recuperar los datos serealizados en los correspondientes archivos de cada 
+	 * tipo de objeto
+	 * 
+	 */
 	public static void b2() {
 		File archivo = new File("");
 		try {
-
-			ObjectInputStream recuperar_estudiantes = new ObjectInputStream(
-					new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\temp\\Estudiantes.txt"));
-			estudiantes = (ArrayList<Estudiante>) recuperar_estudiantes.readObject();
-			ArrayList<Estudiante> temp_e = Estudiante.getEstudiantes();
-			temp_e.addAll(estudiantes);
-			Estudiante.setEstudiantes(temp_e);
-			recuperar_estudiantes.close();
-
+			
 			ObjectInputStream recuperar_profesores = new ObjectInputStream(
 					new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\temp\\Profesores.txt"));
 			profesores = (ArrayList<Profesor>) recuperar_profesores.readObject();
@@ -131,6 +131,15 @@ public class Serializacion {
 			temp_p.addAll(profesores);
 			Profesor.setProfesores(temp_p);
 			recuperar_profesores.close();
+			
+			
+			ObjectInputStream recuperar_estudiantes = new ObjectInputStream(
+					new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\temp\\Estudiantes.txt"));
+			estudiantes = (ArrayList<Estudiante>) recuperar_estudiantes.readObject();
+			ArrayList<Estudiante> temp_e = Estudiante.getEstudiantes();
+			temp_e.addAll(estudiantes);
+			Estudiante.setEstudiantes(temp_e);
+			recuperar_estudiantes.close();
 
 			ObjectInputStream recuperar_asignaturas = new ObjectInputStream(
 					new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\temp\\Asignaturas.txt"));
@@ -148,6 +157,7 @@ public class Serializacion {
 			Grado.setGrados(temp_g);
 			recuperar_grados.close();
 		} catch (Exception e) {
+			System.out.println(e);
 
 		}
 	}

@@ -1,6 +1,7 @@
 package gestorAplicacion.perfiles;
 import gestorAplicacion.academico.*;
 import java.util.*;
+import java.util.Map.Entry;
 
 import BaseDatos.Serializacion;
 
@@ -11,7 +12,7 @@ public class Estudiante extends Persona implements Serializable{
 	private String acudiente;
 	private float promedio;
 	private ArrayList <Nota> notas = new ArrayList <Nota>();
-	private HashMap <String,Float> promedios = new HashMap <String,Float>();
+	private HashMap <Integer,Float> promedios = new HashMap <Integer,Float>();
 	private static ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
 	private Grado grado;
 	private boolean ayuda = false;
@@ -122,19 +123,21 @@ public class Estudiante extends Persona implements Serializable{
 	}
 	
 	public float promedio_asignatura(Asignatura asi) {
-		float nro_notas = 0;
+		float totalnotas = 0;
 		int iter=0;
 		for(Nota temp: notas){
-		    if(temp.getAsignatura()==asi) {
-		    	nro_notas+=temp.getCalificacion();
+		    if(temp.getAsignatura().getId()==asi.getId()) {
+		    	totalnotas+=temp.getCalificacion();
 		    	iter++;
 		    }
 		}
-		nro_notas = nro_notas / iter;
-		promedios.put(asi.getNombre(), nro_notas);
+		totalnotas = totalnotas / iter;
+		promedios.put(asi.getId(), totalnotas);
 		Serializacion.base_datos();
-		return nro_notas;
+		return totalnotas;
 	}
+	
+	
 	public void promedios() {
 		for(Nota temp: notas){
 			promedio_asignatura(temp.getAsignatura());
@@ -143,23 +146,26 @@ public class Estudiante extends Persona implements Serializable{
 	
 	public void promedio_general() {
 		float promediog=0;
-		promedios();
+		this.promedios();
 		if (promedios.size()>0) {
-			for (Map.Entry<String, Float> entry : promedios.entrySet()) {
-			    promediog+=entry.getValue();
+			for (Entry<Integer, Float> entry : promedios.entrySet()) {
+				promediog+=entry.getValue();
 			}
 			this.setPromedio(promediog/this.promedios.size());
-		}else {
+		}
+		else {
 			this.setPromedio(0);
 		}
 	}
+	
+	/////////////////////////////////////////////////////////
 	public Boolean porcentaje_periodo() {
 		int x=0,y=0;
 		boolean t=false;
-		for (Map.Entry<String, Float> entry : promedios.entrySet()) {
+		for (Entry<Integer, Float> entry : promedios.entrySet()) {
 		    //.getValue(); .getKey();
 			for(Nota temp: notas) {
-				if(entry.getKey().equals(temp.getAsignatura().getNombre())) {
+				if(entry.getKey().equals(temp.getAsignatura().getId())) {
 					if(temp.getAsignatura().getPorcentaje_avance()==100) {
 						t=true;
 					}else {
@@ -174,17 +180,17 @@ public class Estudiante extends Persona implements Serializable{
 			return false;
 		}
 	}
-	public float avance_asignatura(String asi) {
+	public float avance_asignatura(int asi) {
 		float por = 0;
 		for(Nota temp: notas) {
-			if (temp.getAsignatura().getNombre().equals(asi)){
+			if (temp.getAsignatura().getId()==asi){
 				por= temp.getAsignatura().getPorcentaje_avance() ;
 			}
 		}return por;
 	}
 	public float avance_periodo () {
 		short ayuda=0;
-		for (Map.Entry<String, Float> entry : promedios.entrySet()) {
+		for (Entry<Integer, Float> entry : promedios.entrySet()) {
 			ayuda+=avance_asignatura(entry.getKey());
 		}return ayuda/promedios.size();
 	}

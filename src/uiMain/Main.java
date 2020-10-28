@@ -21,7 +21,7 @@ public class Main {
 		System.out.println("5. Salir");
 	}
 
-	@SuppressWarnings("unchecked")
+	//@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 
 		Serializacion.b2();
@@ -30,8 +30,8 @@ public class Main {
 		ArrayList<Asignatura> asignaturas = Serializacion.getAsignaturas();
 		ArrayList<Grado> grados = Serializacion.getGrados();
 
-		// int loop = 0;
-		// while (loop == 0) {
+		//int loop = 0;
+		//while (loop == 0) {
 
 		inicio();
 		@SuppressWarnings("resource")
@@ -63,8 +63,9 @@ public class Main {
 				String acudiente = reader.next();
 				System.out.println("");
 				new Estudiante(cedula, nombres, apellidos, edad, acudiente);
-
+				
 				System.out.println("Estudiante creado exitosamente.");
+				
 				break;
 			case 2:
 				if (estudiantes.size() > 0) {
@@ -105,7 +106,9 @@ public class Main {
 					for (Estudiante e : estudiantes) {
 						dnis.add(e.getDNI());
 						if (e.getDNI() == dni) {
+							e.promedio_general();
 							System.out.println(e.toString());
+							
 						}
 					}
 					if (!dnis.contains(dni)) {
@@ -267,7 +270,6 @@ public class Main {
 							if (es.getDNI() == e && g.getId() == idg) {
 								g.agregarEstudiante(es);
 								System.out.println("Estudiante Matriculado exitosamente");
-								System.out.println(g.estudiantesInscritos());
 							}
 						}
 					} /*
@@ -350,9 +352,7 @@ public class Main {
 					for (Grado g : grados) {
 						ids.add(g.getId());
 						if (g.getId() == idg) {
-							for (Estudiante e: g.getEstudiantes()) {
-								e.promedio_general();
-							}
+							//System.out.println(g.estudiantesInscritos());
 							System.out.println(g.cuadro_Honor());
 						}
 					}
@@ -503,11 +503,11 @@ public class Main {
 
 			break;
 		case 5: // SALIR
-			// loop = -1;
+			//loop = -1;
 			break;
-		}
-		// break;
-		// }
+			}
+
+		//}
 
 		/*
 		 * NOTAS: EN EL MANUAL DE USUARIO ESPECIFICAR QUE ES EL ID DEL GRADO. también
@@ -527,14 +527,14 @@ public class Main {
 		 */
 
 		// System.out.println(Serializacion.getEstudiantes().get(0).getNombre());
-
+		System.out.println(estudiantes==Estudiante.getEstudiantes());
 		estudiantes = Serializacion.getEstudiantes();
 		profesores = Serializacion.getProfesores();
 		asignaturas = Serializacion.getAsignaturas();
 		grados = Serializacion.getGrados();
 
-		// Serializacion.base_datos();
-
+		//Serializacion.base_datos();
+		
 		//System.out.println(estudiantes);
 		//System.out.println(profesores);
 		//System.out.println(asignaturas);
