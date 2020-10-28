@@ -8,9 +8,9 @@ tareas como ayudar a los docentes con el labor de calificar y gestionar sus
 grupos de manera rápida y sencilla.
 
 # Autores:
-Sebastian Agudelo Osorio
-Daniela Guardia Cuervo
-Cristian David Quinchia Ramirez
+Sebastian Agudelo Osorio  
+Daniela Guardia Cuervo  
+Cristian David Quinchia Ramirez  
 
 # Componentes del módulo:
 -src:
