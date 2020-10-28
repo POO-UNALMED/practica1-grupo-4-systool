@@ -6,7 +6,7 @@ import BaseDatos.Serializacion;
 
 import java.io.*;
 
-
+//CLASE NECESARIA PARA SABER QUIEN DICTA LAS MATERIAS Y DIRIGE LOS GRADOS
 public class Profesor extends Persona implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String titulo_profesional;

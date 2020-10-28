@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import BaseDatos.Serializacion;
 
 import java.io.*;
-
+//CLASE NECESARIA PARA SABER QUE MATERIAS SE DICTAN EN LOS GRADOS Y QUE ESTUDIANTES LA VEN
 public class Asignatura implements Serializable {
 
 	private static final long serialVersionUID = 1L;

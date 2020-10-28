@@ -8,7 +8,7 @@ import java.io.*;
 
 import gestorAplicacion.perfiles.Estudiante;
 import gestorAplicacion.perfiles.Profesor;
-
+//CLASE NECESARIA PARA SABER EN QUE GRUPO ESTAN LOS ESTUDIANTES Y LAS MATERIAS QUE VEN
 public class Grado implements Serializable {
 	private static final long serialVersionUID = 1L;
 

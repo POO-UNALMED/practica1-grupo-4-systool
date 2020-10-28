@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import BaseDatos.Serializacion;
 
 import java.io.*;
-
+//CLASE NECESARIA PARA SABER A QUE MATERIA Y ESTUDIANTE PERTENECEN LAS CALIFICACIONES
 public class Nota implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private float calificacion;

@@ -6,7 +6,7 @@ import java.util.Map.Entry;
 import BaseDatos.Serializacion;
 
 import java.io.*;
-
+//CLASE NECESARIA PARA EL PROYECTO EN SU TOTALIDAD
 public class Estudiante extends Persona implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String acudiente;
