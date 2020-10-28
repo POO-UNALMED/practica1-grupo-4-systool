@@ -69,21 +69,35 @@ public class Serializacion {
 
 			ObjectOutputStream guardar_estudiantes = new ObjectOutputStream(
 					new FileOutputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\temp\\Estudiantes.txt"));
+			
+			ArrayList<Estudiante> temp_e = Estudiante.getEstudiantes();
+			temp_e.addAll(estudiantes);
+			Estudiante.setEstudiantes(temp_e);
 			guardar_estudiantes.writeObject(Estudiante.getEstudiantes());
 			guardar_estudiantes.close();
 
 			ObjectOutputStream guardar_profesores = new ObjectOutputStream(
 					new FileOutputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\temp\\Profesores.txt"));
+			
+			ArrayList<Profesor> temp_p = Profesor.getProfesores();
+			temp_p.addAll(profesores);
+			Profesor.setProfesores(temp_p);
 			guardar_profesores.writeObject(Profesor.getProfesores());
 			guardar_profesores.close();
 
 			ObjectOutputStream guardar_asignaturas = new ObjectOutputStream(
 					new FileOutputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\temp\\Asignaturas.txt"));
+			ArrayList<Asignatura> temp_a = Asignatura.getAsignaturas();
+			temp_a.addAll(asignaturas);
+			Asignatura.setAsignaturas(temp_a);
 			guardar_asignaturas.writeObject(Asignatura.getAsignaturas());
 			guardar_asignaturas.close();
 
 			ObjectOutputStream guardar_grados = new ObjectOutputStream(
 					new FileOutputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\temp\\Grados.txt"));
+			ArrayList<Grado> temp_g = Grado.getGrados();
+			temp_g.addAll(grados);
+			Grado.setGrados(temp_g);
 			guardar_grados.writeObject(Grado.getGrados());
 			guardar_grados.close();
 
