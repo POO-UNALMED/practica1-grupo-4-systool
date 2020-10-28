@@ -88,9 +88,9 @@ public class Estudiante extends Persona implements Serializable{
 	public void agregarNota(Nota cero) {
 		this.notas.add(cero);
 		Serializacion.base_datos();
-		//this.prevencion_bajo_rendimiento();
 		
 	}
+	
 	//ESTE MÉTODO ORGANIZA LAS NOTAS DEL ESTUDIANTE CON RESPECTO A LAS MATERIAS, Y DEVUELVE UN STRING
 	//CON TODAS LAS CALIFICACIONES DE LAS NOTAS DE CADA MATERIA QUE TIENE EL ESTUDIANTE.
 	public String misNotas() {
@@ -147,6 +147,7 @@ public class Estudiante extends Persona implements Serializable{
 			promedio_asignatura(temp.getAsignatura());
 		}
 	}
+	
 	//ESTE MÉTODO RECORRE EL HASHMAP Y HACE EL PROMEDIO DE LOS PROMEDIOS DE LAS ASIGNATURAS PARA OBTENER 
 	//EL PROMEDIO GENERAL DEL ESTUDIANTE Y ASIGNA.
 	public void promedio_general() {
@@ -163,7 +164,6 @@ public class Estudiante extends Persona implements Serializable{
 		}
 	}
 	
-	/////////////////////////////////////////////////////////
 	//ESTE MÉTODO RECORRE EL HASHMAP DE PROMEDIOS Y VERIFICA MEDIANTE UNA SECUENCIA DE BOOLEANOS QUE
 	//TODAS LAS MATERIAS TENGAN EL 100% DE SUS CALIFICACIONES, SI ES ASI RETORNA TRUE EN CASO CONTRARIO RETORNA FALSE.
 	public Boolean porcentaje_periodo() {
@@ -217,7 +217,6 @@ public class Estudiante extends Persona implements Serializable{
 				;
 	}
 	
-	//Metodo Especial
 	//ESTE MÉTODO ORDENA EL LISTADO DE ESTUDIANTE RESPECTO A SU PROMEDIO Y LUEGO IMPRIME LOS PRIMERO 10,
 	//QUE SERIAN LOS MEJORES 10 DEL COLEGIO.
 	public static String mejores_colegio() {
