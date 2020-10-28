@@ -91,7 +91,8 @@ public class Estudiante extends Persona implements Serializable{
 		//this.prevencion_bajo_rendimiento();
 		
 	}
-	
+	//ESTE MÉTODO ORGANIZA LAS NOTAS DEL ESTUDIANTE CON RESPECTO A LAS MATERIAS, Y DEVUELVE UN STRING
+	//CON TODAS LAS CALIFICACIONES DE LAS NOTAS DE CADA MATERIA QUE TIENE EL ESTUDIANTE.
 	public String misNotas() {
 		Collections.sort(notas, new Comparator <Nota>() {
 			   public int compare(Nota obj1, Nota obj2) {
@@ -121,7 +122,9 @@ public class Estudiante extends Persona implements Serializable{
 		
 		return sal;
 	}
-	
+	//ESTE MÉTODO RECIBE UN OBJETO TIPO ASIGNATURA, LO QUE HACE ES BUSCAR TODAS LAS CALIFICACIONES QUE TIENE
+	//EL ESTUDIANTE EN DICHA ASIGNATURA Y DEVUELVE EL PROMEDIO DE ELLAS, TAMBIEN LLENA UN HASMAP CON LA ASIGNATURA 
+	//ENVIADA COMO CLAVE Y SU PROMEDIO COMO VALOR 
 	public float promedio_asignatura(Asignatura asi) {
 		float totalnotas = 0;
 		int iter=0;
@@ -137,13 +140,15 @@ public class Estudiante extends Persona implements Serializable{
 		return totalnotas;
 	}
 	
-	
+	//ESTE MÉTODO SE ENCARGA DE ENVIAR A PROMEDIO ASIGNATURA TODAS LAS ASIGNATURAS PARA LLENAR EL HASHMAP DE
+	//PROMEDIOS CON LAS ASIGNATURAS Y SUS RESPECTIVOS PROMEDIOS
 	public void promedios() {
 		for(Nota temp: notas){
 			promedio_asignatura(temp.getAsignatura());
 		}
 	}
-	
+	//ESTE MÉTODO RECORRE EL HASHMAP Y HACE EL PROMEDIO DE LOS PROMEDIOS DE LAS ASIGNATURAS PARA OBTENER 
+	//EL PROMEDIO GENERAL DEL ESTUDIANTE Y ASIGNA.
 	public void promedio_general() {
 		float promediog=0;
 		this.promedios();
@@ -159,11 +164,12 @@ public class Estudiante extends Persona implements Serializable{
 	}
 	
 	/////////////////////////////////////////////////////////
+	//ESTE MÉTODO RECORRE EL HASHMAP DE PROMEDIOS Y VERIFICA MEDIANTE UNA SECUENCIA DE BOOLEANOS QUE
+	//TODAS LAS MATERIAS TENGAN EL 100% DE SUS CALIFICACIONES, SI ES ASI RETORNA TRUE EN CASO CONTRARIO RETORNA FALSE.
 	public Boolean porcentaje_periodo() {
 		int x=0,y=0;
 		boolean t=false;
 		for (Entry<Integer, Float> entry : promedios.entrySet()) {
-		    //.getValue(); .getKey();
 			for(Nota temp: notas) {
 				if(entry.getKey().equals(temp.getAsignatura().getId())) {
 					if(temp.getAsignatura().getPorcentaje_avance()==100) {
@@ -180,6 +186,8 @@ public class Estudiante extends Persona implements Serializable{
 			return false;
 		}
 	}
+	//ESTE MÉTODO RECIBE EL ID DE UNA ASIGNATURA, Y BUSCA DICHA ASIGNATURA EN LA LISTA DE NOTAS AL ENCONTRARLA
+	//LE PIDE EL PORCENTAJE DE AVANCE DESDE ASIGNATURA Y LO RETORNA.
 	public float avance_asignatura(int asi) {
 		float por = 0;
 		for(Nota temp: notas) {
@@ -188,6 +196,9 @@ public class Estudiante extends Persona implements Serializable{
 			}
 		}return por;
 	}
+	//ESTE MÉTODO RECORRE EL HASHMAP (USAMOS EL HASHMAP PARA TENER CONSIDERAR SOLO UNA ASIGNATURA, 
+	//YA QUE NO PERMITE KEYS REPETIDAS) PARA PEDIR EL AVANCE DE CADA ASIGNATURA Y LOS PROMEDIA PARA SABER CUAL
+	//ES EL PORCENTAJE DE AVANCE DEL PERIODO.
 	public float avance_periodo () {
 		short ayuda=0;
 		for (Entry<Integer, Float> entry : promedios.entrySet()) {
@@ -207,16 +218,8 @@ public class Estudiante extends Persona implements Serializable{
 	}
 	
 	//Metodo Especial
-	/*public void prevencion_bajo_rendimiento() {
-		this.promedio_general();
-		if(this.promedio >= 0.5 && this.promedio < 1.0 && this.avance_periodo()>=40 && this.avance_periodo()<=60) {
-			this.ayuda=true;
-			System.out.println("El estudiante "+this.getNombre()+" "+
-			this.getApellido()+" "+this.getDNI()+" necesita ayuda pedagogica");
-		}
-		
-	}
-	*/
+	//ESTE MÉTODO ORDENA EL LISTADO DE ESTUDIANTE RESPECTO A SU PROMEDIO Y LUEGO IMPRIME LOS PRIMERO 10,
+	//QUE SERIAN LOS MEJORES 10 DEL COLEGIO.
 	public static String mejores_colegio() {
 		Collections.sort(estudiantes, new Comparator <Estudiante>() {
 			   public int compare(Estudiante obj1, Estudiante obj2) {
