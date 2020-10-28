@@ -89,6 +89,25 @@ public class Grado implements Serializable {
 	}
 
 	// MÉTODOS
+	public float porcentaAsignatura(Asignatura idasi) {
+		float cont1=0;
+		float cont2=0;
+		for (Estudiante est: estudiantes) {
+			for (Nota temp: est.getNotas()) {
+				if(temp.getAsignatura()==idasi) {
+					cont1++;
+				}
+			}if (cont1>cont2) {
+				cont2=cont1;
+				cont1=0;
+			}
+			
+		}
+		float porcentaje_avance_nota=100/idasi.numero_notas;
+		float porcentaje_avance=porcentaje_avance_nota*cont2;
+		idasi.setPorcentaje_avance(porcentaje_avance);
+		return porcentaje_avance;
+	}
 	public void agregarEstudiante(Estudiante nene) {
 		estudiantes.add(nene);
 		nene.setGrado(this);
@@ -97,6 +116,7 @@ public class Grado implements Serializable {
 
 	public void agregarAsignatura(Asignatura asi) {
 		asignaturas.add(asi);
+		asi.agregarGrado(this);
 		Serializacion.base_datos();
 		// asi.agregarGrado(this);
 	}

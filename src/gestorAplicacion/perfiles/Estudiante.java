@@ -175,7 +175,8 @@ public class Estudiante extends Persona implements Serializable{
 					if(temp.getAsignatura().getPorcentaje_avance()==100) {
 						t=true;
 					}else {
-					}t=false;
+						t=false;
+					}
 				}
 			}if(t==true) {
 				x++;
@@ -194,7 +195,7 @@ public class Estudiante extends Persona implements Serializable{
 		float por = 0;
 		for(Nota temp: notas) {
 			if (temp.getAsignatura().getId()==asi){
-				por= temp.getAsignatura().getPorcentaje_avance() ;
+				por= temp.getAsignatura().getPorcentaje_avance();
 			}
 		}return por;
 	}

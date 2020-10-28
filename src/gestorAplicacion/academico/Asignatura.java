@@ -14,7 +14,7 @@ public class Asignatura implements Serializable {
 	private String descripcion;
 	public int numero_notas;
 	public float porcentaje_avance;
-	//private ArrayList <Grado> grados = new ArrayList <Grado>();
+	private ArrayList <Grado> grados = new ArrayList <Grado>();
 	private ArrayList <Profesor> profesores = new ArrayList <Profesor>();
 	private ArrayList <Nota> calificaciones = new ArrayList <Nota>();
 	private static ArrayList <Asignatura> asignaturas = new ArrayList <Asignatura>();
@@ -40,21 +40,22 @@ public class Asignatura implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-	/*
+	
 	public ArrayList <Grado> getGrados() {
 		return grados;
 	}
 	public void setGrados(ArrayList <Grado> grados) {
 		this.grados = grados;
-	}*/
+	}
+	public void agregarGrado(Grado g) {
+		this.grados.add(g);
+	}
 	public int getNumero_notas() {
 		return numero_notas;
 	}
 	public void setNumero_notas(int numer) {
 		this.numero_notas=numer;
 	}
-
-	
 	public String getNombre() {
 		return nombre;
 	}
@@ -89,10 +90,12 @@ public class Asignatura implements Serializable {
 	}
 	
 	public float getPorcentaje_avance() {
-		float porcentaje_avance_nota=100/numero_notas;
-		porcentaje_avance=porcentaje_avance_nota*calificaciones.size();
+		for (Grado grad:grados) {
+			grad.porcentaAsignatura(this);
+		}
 		return porcentaje_avance;
 	}
+	
 	public void setPorcentaje_avance(float porcentaje_avance) {
 		this.porcentaje_avance = porcentaje_avance;
 	}
@@ -104,7 +107,7 @@ public class Asignatura implements Serializable {
 				"Nombre: "+this.getNombre()+"\n"+
 				"Descripción: "+this.getDescripcion()+"\n"+
 				"Numero de notas: "+this.getNumero_notas()+"\n"+
-				"Porcentaje de avance: "+this.getPorcentaje_avance();
+				"Porcentaje de avance: "+ this.getPorcentaje_avance();
 	} 
 	
 	public void agregarNota(Nota cero) {
