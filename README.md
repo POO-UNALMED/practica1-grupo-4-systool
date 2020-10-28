@@ -14,7 +14,7 @@ Cristian David Quinchia Ramirez
 
 # Componentes del módulo:
 -src:  
-..  -Paquete BaseDatos:  
+ㅤ-Paquete BaseDatos:  
 ....    *Clase Serializacion.java  
     *Directorio temp  
   -Paquete gestorAplicacion:  
