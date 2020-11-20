@@ -320,7 +320,6 @@ public class Estudiante extends Persona implements Serializable{
 		return sal;
 	}
 	
-	
 
 	
 }

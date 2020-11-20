@@ -87,8 +87,8 @@ public class Main {
 					System.out.println(
 							"Usted no ha creado estudiantes, por favor vaya a la sección de crear estudiantes.");
 				}
-
 				break;
+				
 			case 3:
 				for(Estudiante e:estudiantes) {
 					e.promedio_general();
